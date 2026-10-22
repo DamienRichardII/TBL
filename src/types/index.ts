@@ -1,0 +1,41 @@
+export type Division = "Lightweight" | "Middleweight" | "Heavyweight";
+
+export interface Player {
+  slug: string;
+  name: string;
+  nickname?: string;          // jamais "À confirmer" : absent si non officiel
+  number?: number;
+  height: string;             // ex. "1,92 m"
+  division: Division;
+  /** Bilan TBL confirmé uniquement (jamais de 0-0 par défaut) */
+  tblRecord?: { wins: number; losses: number };
+  /** Bilan hors TBL (TapeUp, TopHoops…) : affiché à part, jamais dans le classement TBL */
+  otherRecord?: { source: string; wins: number; losses: number };
+  note?: string;
+}
+
+export interface Match {
+  game: number;
+  label: string;              // Main event, Tryout…
+  division: Division;
+  title?: boolean;
+  tryout?: boolean;
+  a: string;                  // slug joueur
+  b: string;
+  poster: string;
+  posterAlt: string;
+}
+
+export interface TblEvent {
+  slug: string;
+  name: string;
+  subtitle?: string;
+  tags: ("1vs1" | "Tournois" | "Show" | "Passés")[];
+  status: "À venir" | "Passé";
+  dateLabel: string;
+  time?: string;
+  city?: string;
+  venue?: string;
+  access?: string;
+  image: string;
+}
