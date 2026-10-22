@@ -25,7 +25,7 @@ const reasons = [
 
 export function Hero() {
   return (
-    <section className="relative isolate flex min-h-[640px] items-end justify-center overflow-hidden bg-ink pb-14 pt-28 lg:h-[780px] lg:pb-16">
+    <section className="relative isolate flex min-h-[640px] items-end justify-center overflow-hidden bg-ink pb-14 pt-28 lg:h-auto lg:flex-1 lg:pb-16">
       <div className="absolute inset-0 -z-10 grid grid-cols-1 lg:grid-cols-2">
         <div className="relative"><Image src={IMG.hero.left} alt="" fill priority sizes="(min-width:1024px) 50vw, 100vw" className="object-cover object-[50%_30%] grayscale contrast-125" /></div>
         <div className="relative hidden lg:block"><Image src={IMG.hero.right} alt="" fill priority sizes="50vw" className="object-cover object-[50%_30%] grayscale contrast-125" /></div>

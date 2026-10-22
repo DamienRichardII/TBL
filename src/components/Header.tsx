@@ -11,7 +11,13 @@ const icons = [Home, Trophy, BarChart3, Users, Play, Info, Mail];
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const path = usePathname();
+  useEffect(() => {
+    const on = () => setScrolled(window.scrollY > 20);
+    on(); window.addEventListener("scroll", on, { passive: true });
+    return () => window.removeEventListener("scroll", on);
+  }, []);
   useEffect(() => setOpen(false), [path]);
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -23,7 +29,7 @@ export function Header() {
 
   return (
     <>
-      <header className="absolute inset-x-0 top-0 z-40 bg-gradient-to-b from-ink/90 to-ink/30 backdrop-blur-[2px]">
+      <header className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${scrolled ? "border-b border-line bg-ink/90 backdrop-blur-md" : "bg-gradient-to-b from-ink/90 to-ink/30 backdrop-blur-[2px]"}`}>
         <div className="mx-auto flex h-16 max-w-page items-center justify-between px-4 lg:h-[72px] lg:px-6">
           <button className="lg:hidden" aria-label="Ouvrir le menu" aria-expanded={open} onClick={() => setOpen(true)}><Menu size={26} /></button>
           <Link href="/" aria-label="TBL – Accueil" className="hidden items-center gap-3 lg:flex">

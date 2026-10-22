@@ -1,14 +1,18 @@
-import { Instagram, Youtube, Music2, Ghost } from "lucide-react";
-/** Liens réseaux sociaux non fournis : icônes affichées, sans lien, jusqu'à réception des URLs officielles. */
+import { Instagram, Youtube, Music2 } from "lucide-react";
 const items = [
-  { Icon: Music2, label: "TikTok" }, { Icon: Ghost, label: "Snapchat" },
-  { Icon: Instagram, label: "Instagram" }, { Icon: Youtube, label: "YouTube" },
+  { Icon: Music2, label: "TikTok", href: "https://www.tiktok.com/@theballinleague" },
+  { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/theballinleague/" },
+  { Icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@TheBallinLeague" },
 ];
 export function Socials({ size = 18, className = "" }: { size?: number; className?: string }) {
   return (
     <ul className={`flex items-center gap-4 ${className}`}>
-      {items.map(({ Icon, label }) => (
-        <li key={label}><span title={`${label} — lien officiel à venir`} aria-label={`${label} (lien à venir)`} role="img" className="text-white/90"><Icon size={size} strokeWidth={1.8} /></span></li>
+      {items.map(({ Icon, label, href }) => (
+        <li key={label}>
+          <a href={href} target="_blank" rel="noopener noreferrer" aria-label={`${label} de TBL (nouvel onglet)`} title={label} className="text-white/90 transition hover:text-gold">
+            <Icon size={size} strokeWidth={1.8} />
+          </a>
+        </li>
       ))}
     </ul>
   );
