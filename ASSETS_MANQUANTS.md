@@ -4,7 +4,7 @@
 - Photos individuelles des 16 joueurs (cartes et fiches : placeholder « Photo à venir »).
 - Vidéos (page /videos : emplacements vides, aucune fausse vidéo).
 - Visuels « TBL Paris », « TBL Summer » de la maquette : événements non mentionnés dans le dossier officiel, non repris.
-- Liens officiels réseaux sociaux (TikTok, Snapchat, Instagram, YouTube) : icônes affichées sans lien.
+- Snapchat : icône retirée (aucun lien fourni). TikTok, Instagram et YouTube sont branchés.
 - Lien de réservation officiel, coordonnées professionnelles (e-mail, téléphone).
 - Police officielle de TBL : Oswald et Inter (Google Fonts) utilisées en remplacement.
 - Logo : seule une version image (`logo.jpeg`, fond noir) a été fournie ; détourée en PNG transparent. Un SVG officiel est préférable.
