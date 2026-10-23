@@ -2,10 +2,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu, X, Home, Trophy, BarChart3, Users, Play, Info, Mail } from "lucide-react";
+import { Menu, X, Home, Trophy, BarChart3, Users, Play, Info, Mail, Youtube } from "lucide-react";
 import { Logo } from "./Logo";
 import { Socials } from "./Socials";
-import { nav, RESERVATION_HREF } from "@/data/site";
+import { nav, RESERVATION_HREF, YOUTUBE_URL } from "@/data/site";
 
 const icons = [Home, Trophy, BarChart3, Users, Play, Info, Mail];
 
@@ -37,15 +37,16 @@ export function Header() {
             <span className="title text-[17px] tracking-[0.12em]">The Ballin League</span>
           </Link>
           <Link href="/" aria-label="TBL – Accueil" className="absolute left-1/2 -translate-x-1/2 lg:hidden"><Logo height={38} priority /></Link>
-          <nav aria-label="Navigation principale" className="hidden items-center gap-6 lg:flex">
+          <nav aria-label="Navigation principale" className="hidden items-center gap-5 lg:flex xl:gap-6">
             {nav.map((n) => (
               <Link key={n.href} href={n.href} aria-current={active(n.href) ? "page" : undefined}
                 className={`border-b pb-0.5 text-[12px] font-medium transition hover:text-white ${active(n.href) ? "border-white text-white" : "border-transparent text-white/80"}`}>{n.label}</Link>
             ))}
+            <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-[12px] font-semibold text-white transition hover:text-[#ff4d4d]"><Youtube size={16} className="text-[#FF0000]" />YouTube</a>
           </nav>
           <div className="flex items-center gap-5">
             <Socials className="" />
-            <Link href={RESERVATION_HREF} className="btn btn-light hidden !py-2.5 lg:inline-flex">Billetterie</Link>
+            <Link href={RESERVATION_HREF} className="btn btn-gold hidden !py-2.5 lg:inline-flex">Billetterie</Link>
           </div>
         </div>
       </header>
@@ -54,14 +55,15 @@ export function Header() {
         <div role="dialog" aria-modal="true" aria-label="Menu" className="fixed inset-0 z-50 flex flex-col bg-ink px-8 pb-10 pt-5 lg:hidden">
           <button className="ml-auto" aria-label="Fermer le menu" onClick={() => setOpen(false)}><X size={26} /></button>
           <div className="mt-2 flex justify-center"><Logo height={84} /></div>
-          <nav aria-label="Menu mobile" className="mt-10 flex flex-1 flex-col gap-6">
+          <nav aria-label="Menu mobile" className="mt-8 flex flex-1 flex-col gap-5">
             {nav.map((n, i) => { const Icon = icons[i]; return (
               <Link key={n.href} href={n.href} className={`flex items-center gap-4 text-[15px] ${active(n.href) ? "text-gold" : "text-white"}`}>
                 <Icon size={18} strokeWidth={1.6} /> {n.label}
               </Link>); })}
           </nav>
+          <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" className="btn btn-yt mb-3 w-full gap-2"><Youtube size={18} />Notre chaîne YouTube</a>
           <Link href="/evenements" className="btn btn-light w-full">Voir les événements</Link>
-          <Link href={RESERVATION_HREF} className="btn btn-ghost mt-3 w-full">Réserver ma place</Link>
+          <Link href={RESERVATION_HREF} className="btn btn-gold mt-3 w-full">Réserver ma place</Link>
           <Socials size={22} className="mt-8 justify-center gap-8" />
         </div>
       )}

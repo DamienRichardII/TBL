@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-:root { --ink:#08090B; --bone:#F3F1ED; --gold:#C9A15C; }
+:root { --ink:#08090B; --bone:#F3F1ED; --gold:#C9A15C; --gold-hi:#E8CC94; --gold-lo:#9C7430; }
 html { scroll-behavior: smooth; }
 body { background: var(--ink); color: #fff; font-family: var(--font-sans), system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 @layer components {
@@ -9,6 +9,11 @@ body { background: var(--ink); color: #fff; font-family: var(--font-sans), syste
   .btn-light { @apply bg-white text-ink hover:bg-bone; }
   .btn-ghost { @apply border border-white/80 text-white hover:bg-white hover:text-ink; }
   .btn-dark { @apply bg-ink text-white hover:bg-neutral-800; }
+  .btn-gold { @apply text-ink hover:brightness-110; background: linear-gradient(135deg, var(--gold-hi), var(--gold) 55%, var(--gold-lo)); }
+  .btn-yt { @apply bg-[#FF0000] text-white hover:bg-[#d90000]; }
+  .gold-text { background: linear-gradient(135deg, var(--gold-hi), var(--gold) 55%, var(--gold-lo)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .gold-rule { height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .gold-glow { background: radial-gradient(60% 100% at 50% 100%, rgba(201,161,92,.28), transparent 70%); }
   .btn-disabled { @apply cursor-not-allowed bg-white/15 text-white/70; }
   .title { @apply font-display uppercase tracking-wide leading-none; }
   .chip { @apply rounded-full border px-4 py-1.5 text-xs font-medium transition; }

@@ -7,10 +7,15 @@ export interface Player {
   number?: number;
   height: string;             // ex. "1,92 m"
   division: Division;
+  /** Photo officielle (chemin /img/players/xxx.webp) : placeholder si absent */
+  photo?: string;
+  champion?: boolean;
   /** Bilan TBL confirmé uniquement (jamais de 0-0 par défaut) */
   tblRecord?: { wins: number; losses: number };
   /** Bilan hors TBL (TapeUp, TopHoops…) : affiché à part, jamais dans le classement TBL */
   otherRecord?: { source: string; wins: number; losses: number };
+  /** IDs YouTube de ses performances */
+  videos?: string[];
   note?: string;
 }
 
@@ -24,6 +29,8 @@ export interface Match {
   b: string;
   poster: string;
   posterAlt: string;
+  /** Résultat : renseigné après l'événement */
+  result?: { winner: string; detail?: string };
 }
 
 export interface TblEvent {
@@ -38,4 +45,7 @@ export interface TblEvent {
   venue?: string;
   access?: string;
   image: string;
+  href: string;
 }
+
+export interface RankEntry { slug: string; wins: number; losses: number; champion?: boolean }

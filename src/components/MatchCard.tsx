@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Match, Player } from "@/types";
 import { getPlayer } from "@/data/players";
+import { Crown } from "lucide-react";
 import { RecordLine } from "./RecordBadge";
 
 export function MatchCard({ m }: { m: Match }) {
@@ -13,6 +14,7 @@ export function MatchCard({ m }: { m: Match }) {
       </div>
       <div className="p-4">
         <p className="text-[11px] font-semibold uppercase tracking-widest text-gold">Game {m.game} · {m.label}</p>
+        {m.result && <p className="mt-2 inline-flex items-center gap-1.5 rounded bg-gold/20 px-2 py-1 text-[12px] font-semibold text-gold"><Crown size={13} />Vainqueur : {getPlayer(m.result.winner)?.name}{m.result.detail ? ` · ${m.result.detail}` : ""}</p>}
         <div className="mt-3 grid grid-cols-[1fr_auto_1fr] items-start gap-2">
           <PlayerBit p={a} />
           <span className="title pt-1 text-sm text-gold">VS</span>

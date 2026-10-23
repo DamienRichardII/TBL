@@ -1,24 +1,32 @@
 import type { Metadata } from "next";
-import { Play } from "lucide-react";
 import { PageShell, PageTitle } from "@/components/PageHero";
-import { Notice } from "@/components/DemoNotice";
+import { VideoGrid } from "@/components/VideoGrid";
+import { YouTubeCTA } from "@/components/YouTubeCTA";
+import { getLatestVideos, kindOf } from "@/lib/youtube";
+import { LIVE_VIDEO_ID } from "@/data/site";
 export const metadata: Metadata = { title: "Vidéos" };
-export default function Page() {
+export const revalidate = 3600;
+
+export default async function Page() {
+  const vids = (await getLatestVideos(30)).map((v) => ({ ...v, kind: kindOf(v.title) }));
   return (
     <PageShell>
-      <PageTitle>Vidéos</PageTitle>
-      <section aria-labelledby="live" className="relative overflow-hidden rounded-2xl border border-line bg-neutral-950 p-8 lg:p-14">
-        <span className="mb-4 inline-flex items-center gap-2 rounded bg-neutral-800 px-3 py-1 text-[11px] font-bold tracking-widest text-white/70"><span className="h-2 w-2 rounded-full bg-neutral-500" />LIVE — PROCHAINEMENT</span>
-        <h2 id="live" className="title text-3xl lg:text-5xl">Le direct des événements TBL</h2>
-        <p className="mt-3 max-w-xl text-white/70">L’espace Live accueillera les diffusions des événements futurs. Aucun livestream n’est prévu pour TBL 02.</p>
+      <PageTitle sub="Matchs complets, highlights et teasers : tout est sur la chaîne YouTube de TBL.">Vidéos</PageTitle>
+      <YouTubeCTA compact className="mb-10 sm:justify-start" />
+      <VideoGrid videos={vids} filters />
+
+      <section aria-labelledby="live" className="relative mt-14 overflow-hidden rounded-2xl border border-gold/30 bg-neutral-950 p-6 lg:p-12">
+        <div className="gold-glow absolute inset-0 opacity-50" />
+        <div className="relative">
+          <span className="mb-4 inline-flex items-center gap-2 rounded bg-neutral-800 px-3 py-1 text-[11px] font-bold tracking-widest text-white/70"><span className={`h-2 w-2 rounded-full ${LIVE_VIDEO_ID ? "bg-red-500" : "bg-neutral-500"}`} />{LIVE_VIDEO_ID ? "LIVE" : "LIVE — PROCHAINEMENT"}</span>
+          <h2 id="live" className="title text-3xl lg:text-5xl">Le direct des événements TBL</h2>
+          {LIVE_VIDEO_ID ? (
+            <div className="relative mt-6 aspect-video overflow-hidden rounded-xl"><iframe className="absolute inset-0 h-full w-full" src={`https://www.youtube-nocookie.com/embed/${LIVE_VIDEO_ID}`} title="Live TBL" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen /></div>
+          ) : (
+            <p className="mt-3 max-w-xl text-white/70">Cet espace accueillera la diffusion en direct des prochains événements, avec lecteur vidéo et informations de l’événement. Aucun livestream n’est prévu pour TBL 02.</p>
+          )}
+        </div>
       </section>
-      <h2 className="title mb-5 mt-12 text-2xl">Dernières vidéos</h2>
-      <ul className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        {[1, 2, 3, 4].map((n) => (
-          <li key={n} className="flex aspect-video items-center justify-center rounded-xl border border-dashed border-white/20 bg-neutral-950 text-white/35"><Play size={28} strokeWidth={1.3} /><span className="sr-only">Vidéo à venir</span></li>
-        ))}
-      </ul>
-      <div className="mt-8 max-w-xl"><Notice>Les vidéos seront publiées dès réception des fichiers officiels de TBL.</Notice></div>
     </PageShell>
   );
 }

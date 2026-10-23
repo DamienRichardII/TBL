@@ -1,8 +1,9 @@
 import { Instagram, Youtube, Music2 } from "lucide-react";
+import { INSTAGRAM_URL, TIKTOK_URL, YOUTUBE_URL } from "@/data/site";
 const items = [
-  { Icon: Music2, label: "TikTok", href: "https://www.tiktok.com/@theballinleague" },
-  { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/theballinleague/" },
-  { Icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@TheBallinLeague" },
+  { Icon: Music2, label: "TikTok", href: TIKTOK_URL },
+  { Icon: Instagram, label: "Instagram", href: INSTAGRAM_URL },
+  { Icon: Youtube, label: "YouTube", href: YOUTUBE_URL },
 ];
 export function Socials({ size = 18, className = "" }: { size?: number; className?: string }) {
   return (

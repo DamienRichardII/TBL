@@ -10,6 +10,8 @@ export function Footer() {
         <nav aria-label="Pied de page" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[13px] text-white/70">
           {nav.map((n) => <Link key={n.href} href={n.href} className="hover:text-white">{n.label}</Link>)}
           <Link href="/boutique" className="hover:text-white">Boutique</Link>
+          <Link href="/mentions-legales" className="hover:text-white">Mentions légales</Link>
+          <Link href="/confidentialite" className="hover:text-white">Confidentialité</Link>
         </nav>
         <Socials />
       </div>

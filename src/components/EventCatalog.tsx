@@ -4,13 +4,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { Calendar, MapPin } from "lucide-react";
 import { events } from "@/data/events";
-import { RESERVATION_HREF } from "@/data/site";
+import { RESERVATION_HREF, TICKETING_URL } from "@/data/site";
 
 const filters = ["Tous", "1vs1", "Tournois", "Show", "Passés"] as const;
 
 export function EventCatalog() {
   const [f, setF] = useState<(typeof filters)[number]>("Tous");
-  const list = events.filter((e) => f === "Tous" || e.tags.includes(f));
+  const list = events.filter((e) => f === "Tous" || e.tags.includes(f)).sort((a, b) => (a.status === b.status ? 0 : a.status === "À venir" ? -1 : 1));
   return (
     <>
       <div role="tablist" aria-label="Filtrer les événements" className="mb-8 flex flex-wrap gap-2">
@@ -32,10 +32,10 @@ export function EventCatalog() {
                 </div>
                 <p className="mt-2 flex items-center gap-2 text-[13px] text-ink/70"><Calendar size={14} />{e.dateLabel}</p>
                 {e.city && <p className="mt-1 flex items-center gap-2 text-[13px] text-ink/70"><MapPin size={14} />{e.city}</p>}
-                {e.status === "À venir"
-                  ? <Link href={e.slug === "tbl-02-the-throne" ? RESERVATION_HREF : "#"} className="btn btn-dark mt-4 w-full">Réserver ma place</Link>
-                  : <p className="mt-4 text-[12px] text-ink/50">Événement passé — contenus à venir.</p>}
-                {e.slug === "tbl-02-the-throne" && <Link href={`/evenements/${e.slug}`} className="mt-2 block text-center text-[13px] font-medium underline underline-offset-4">Voir les détails</Link>}
+                {e.status === "À venir" && (TICKETING_URL
+                  ? <a href={TICKETING_URL} target="_blank" rel="noopener noreferrer" className="btn btn-dark mt-4 w-full">Réserver ma place</a>
+                  : <Link href={RESERVATION_HREF} className="btn btn-dark mt-4 w-full">Réserver ma place</Link>)}
+                <Link href={e.href} className={`${e.status === "À venir" ? "mt-2" : "mt-4"} block text-center text-[13px] font-medium underline underline-offset-4`}>{e.status === "À venir" ? "Voir les détails" : "Voir l’édition"}</Link>
               </div>
             </li>
           ))}

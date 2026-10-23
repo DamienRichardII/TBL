@@ -17,3 +17,16 @@
 7. TBL 01 : date et lieu inconnus, affiché « Passé — date à confirmer ». Photos de galerie présentées comme « événements TBL précédents ».
 8. Nombre maximum de places par réservation (prototype limité à 10, signalé à confirmer).
 9. Bloc « Arguments » de l'accueil reformulé (maquette : paiement sécurisé, diffusion live…) pour rester conforme au dossier.
+
+## Retours client (version 2) — état
+Faits côté frontend : bannière TBL 02 + compte à rebours, matchs en avant, boutons YouTube (accueil, menu, vidéos), vidéos YouTube lisibles sur le site (flux public de la chaîne, mis à jour toutes les heures), catégories de vidéos (classement automatique par mots-clés du titre), section Live prête (`LIVE_VIDEO_ID` dans `src/data/site.ts`), classements prêts à être remplis (`src/data/rankings.ts`, champion = couronne), profils joueurs (photo, bilan, historique, vidéos), onglet Résultats, page TBL 01, partenaires, boutique « Coming soon », mentions légales et confidentialité (brouillons), palette noir / or / blanc.
+
+En attente (nécessite le feu vert backend ou des éléments TBL) :
+1. **Billetterie réelle** : renseigner `TICKETING_URL` dans `src/data/site.ts` → tous les boutons « Réserver ma place » pointent dessus et le prototype disparaît.
+2. **Espace administrateur** (joueurs, bilans, classements, événements, vidéos, actus) : backend, non démarré.
+3. **Formulaire de contact fonctionnel** : backend + e-mail officiel de TBL.
+4. QR code / contrôle des billets : géré par la plateforme de billetterie choisie.
+5. Photos officielles des joueurs : ajouter dans `public/img/players/` puis renseigner `photo` dans `src/data/players.ts`.
+6. Mentions légales / confidentialité : compléter les champs entre crochets (éditeur, SIRET, adresse, e-mail).
+7. Orthographe « Kieran » (PDF) ou « Keran » (affiche et titres des vidéos YouTube) : à trancher.
+8. Horaire de l'affiche (« 16-23 ») vs 18 h du dossier.

@@ -7,9 +7,9 @@ import { matches } from "@/data/matches";
 import { MatchCard } from "./MatchCard";
 import { Notice } from "./DemoNotice";
 import { IMG } from "@/lib/assets";
-import { RESERVATION_HREF } from "@/data/site";
+import { RESERVATION_HREF, TICKETING_URL } from "@/data/site";
 
-const tabs = ["Infos", "Matchs", "Galerie"] as const;
+const tabs = ["Infos", "Matchs", "Résultats", "Galerie"] as const;
 
 export function EventDetail() {
   const [tab, setTab] = useState<(typeof tabs)[number]>("Infos");
@@ -32,7 +32,9 @@ export function EventDetail() {
             {["1vs1", "8 matchs", "16 joueurs", "3 divisions"].map((t) => <span key={t} className="rounded border border-gold/60 px-3 py-1.5 text-gold">{t}</span>)}
           </div>
           <div className="mt-6"><Notice>Un billet réservé est nécessaire pour entrer. Aucun livestream n’est prévu pour TBL 02. La réservation en ligne sera ouverte prochainement.</Notice></div>
-          <Link href={RESERVATION_HREF} className="btn btn-light mt-6 w-full lg:w-auto lg:min-w-[280px]">Réserver ma place</Link>
+          {TICKETING_URL
+            ? <a href={TICKETING_URL} target="_blank" rel="noopener noreferrer" className="btn btn-gold mt-6 w-full lg:w-auto lg:min-w-[280px]">Réserver ma place</a>
+            : <Link href={RESERVATION_HREF} className="btn btn-gold mt-6 w-full lg:w-auto lg:min-w-[280px]">Réserver ma place</Link>}
         </div>
       </div>
 
@@ -53,6 +55,9 @@ export function EventDetail() {
         {tab === "Matchs" && (
           <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{matches.map((m) => <li key={m.game}><MatchCard m={m} /></li>)}</ul>
         )}
+        {tab === "Résultats" && (matches.some((m) => m.result)
+          ? <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{matches.filter((m) => m.result).map((m) => <li key={m.game}><MatchCard m={m} /></li>)}</ul>
+          : <Notice>Les résultats des huit matchs seront publiés ici juste après l’événement.</Notice>)}
         {tab === "Galerie" && (<>
           <p className="mb-4 text-[13px] text-white/55">Photos issues des événements TBL précédents (attribution à confirmer).</p>
           <ul className="columns-2 gap-3 lg:columns-4 [&>li]:mb-3">
