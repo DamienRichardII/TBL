@@ -16,5 +16,5 @@ export const IMG = {
   hero: { left: g(24), right: g(28), mobile: g(24) },
   banner: g(15),
   gallery: Array.from({ length: 32 }, (_, i) => g(i + 1)),
-  tbl01Cover: g(6),
+  tbl01Cover: "/img/tbl01-cover.webp",
 } as const;
