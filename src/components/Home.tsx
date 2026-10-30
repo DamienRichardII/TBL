@@ -39,23 +39,25 @@ const stats = [{ n: "8", t: "Matchs" }, { n: "16", t: "Joueurs" }, { n: "3", t: 
 
 export function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-ink pt-24 lg:flex lg:min-h-svh lg:items-center lg:pt-[72px]">
-      <div aria-hidden className="absolute inset-y-0 right-0 -z-10 hidden w-[68%] lg:block">
-        <Image src="/img/hero-bg.webp" alt="" fill priority sizes="68vw" className="object-cover object-[50%_86%]" />
+    <section className="relative isolate overflow-hidden bg-ink pt-24 lg:flex lg:h-svh lg:max-h-[960px] lg:min-h-[640px] lg:items-center lg:pt-[72px]">
+      <div aria-hidden className="absolute inset-y-0 right-0 -z-10 hidden w-[74%] lg:block">
+        <Image src="/img/hero-bg.webp" alt="" fill priority sizes="74vw" className="object-cover object-[50%_22%] saturate-[1.15]" />
         <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/55 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink to-transparent" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#08090B_0%,rgba(8,9,11,.7)_14%,rgba(8,9,11,.2)_36%,transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(60%_70%_at_75%_40%,rgba(201,161,92,.22),transparent)] mix-blend-screen" />
+        <div className="absolute inset-x-0 bottom-0 h-1/6 bg-gradient-to-t from-ink to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-ink/70 to-transparent" />
       </div>
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -left-24 top-1/4 h-2/3 w-64 bg-[radial-gradient(closest-side,rgba(201,161,92,.28),transparent)] blur-xl" />
-        <div className="absolute -right-24 bottom-0 h-1/2 w-72 bg-[radial-gradient(closest-side,rgba(201,161,92,.35),transparent)] blur-xl" />
+        <div className="absolute -left-24 top-1/4 h-2/3 w-64 bg-[radial-gradient(closest-side,rgba(201,161,92,.4),transparent)] blur-xl" />
+        <div className="absolute -right-24 bottom-0 h-1/2 w-72 bg-[radial-gradient(closest-side,rgba(201,161,92,.5),transparent)] blur-xl" />
       </div>
       <div className="mx-auto w-full max-w-page px-4 lg:px-6">
         <div className="relative pb-6 pt-4 lg:max-w-[62%] lg:py-12 lg:pl-6">
           <span aria-hidden className="absolute bottom-6 left-0 top-4 hidden w-[3px] bg-gradient-to-b from-gold-hi via-gold to-transparent lg:block lg:bottom-12 lg:top-12" />
           <h1 className="sr-only">TBL — The Ballin League, basketball 1v1</h1>
           <p className="title gold-text text-[12px] tracking-[0.4em] lg:text-sm">The Ballin League</p>
-          <p aria-hidden className="title mt-3 text-[clamp(3.25rem,13vw,5.25rem)] leading-[0.9] drop-shadow-[0_4px_30px_rgba(0,0,0,.6)] lg:text-[clamp(4rem,7.4vw,9rem)]">More than<br />a game.<span className="gold-text block">A movement.</span></p>
+          <p aria-hidden className="title mt-3 text-[clamp(3.25rem,13vw,5.25rem)] leading-[0.9] drop-shadow-[0_4px_30px_rgba(0,0,0,.6)] lg:whitespace-nowrap lg:text-[clamp(4rem,6.2vw,7.25rem)]">More than<br />a game.<span className="gold-text block">A movement.</span></p>
           <p className="title mt-5 text-[12px] tracking-[0.3em] text-white/80 lg:text-base">La ligue 1v1 de référence en France</p>
           <ul className="mt-6 flex max-w-xl divide-x divide-white/15">
             {stats.map((x) => <li key={x.t} className="flex-1 px-2 text-center first:pl-0 lg:text-left lg:first:pl-0 lg:px-5"><span className="title gold-text block text-3xl lg:text-4xl">{x.n}</span><span className="block text-[10px] font-semibold uppercase tracking-widest text-white/60">{x.t}</span></li>)}
@@ -67,7 +69,7 @@ export function Hero() {
         </div>
       </div>
       <div className="relative mx-4 mb-0 h-[min(125vw,560px)] overflow-hidden rounded-2xl lg:hidden">
-        <Image src="/img/hero-bg.webp" alt="Samuel, joueur TBL" fill priority sizes="100vw" className="object-cover object-[50%_84%]" />
+        <Image src="/img/hero-bg.webp" alt="Samuel, joueur TBL" fill priority sizes="100vw" className="object-cover object-[50%_30%]" />
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-ink to-transparent" />
       </div>
