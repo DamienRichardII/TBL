@@ -2,12 +2,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu, X, Home, Trophy, BarChart3, Users, Play, Info, Mail, Youtube } from "lucide-react";
+import { Menu, X, Home, CalendarDays, BarChart3, Users, Play, Radio, Mail, Youtube } from "lucide-react";
 import { Logo } from "./Logo";
 import { Socials } from "./Socials";
 import { nav, RESERVATION_HREF, YOUTUBE_URL } from "@/data/site";
 
-const icons = [Home, Trophy, BarChart3, Users, Play, Info, Mail];
+const icons = [Home, CalendarDays, BarChart3, Users, Play, Radio, Mail];
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -34,19 +34,20 @@ export function Header() {
           <button className="lg:hidden" aria-label="Ouvrir le menu" aria-expanded={open} onClick={() => setOpen(true)}><Menu size={26} /></button>
           <Link href="/" aria-label="TBL – Accueil" className="hidden items-center gap-3 lg:flex">
             <Logo height={46} priority />
-            <span className="title text-[17px] tracking-[0.12em]">The Ballin League</span>
+            <span className="title hidden text-[17px] tracking-[0.12em] xl:inline">The Ballin League</span>
           </Link>
           <Link href="/" aria-label="TBL – Accueil" className="absolute left-1/2 -translate-x-1/2 lg:hidden"><Logo height={38} priority /></Link>
-          <nav aria-label="Navigation principale" className="hidden items-center gap-5 lg:flex xl:gap-6">
-            {nav.map((n) => (
-              <Link key={n.href} href={n.href} aria-current={active(n.href) ? "page" : undefined}
-                className={`border-b pb-0.5 text-[12px] font-medium transition hover:text-white ${active(n.href) ? "border-white text-white" : "border-transparent text-white/80"}`}>{n.label}</Link>
-            ))}
-            <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-[12px] font-semibold text-white transition hover:text-[#ff4d4d]"><Youtube size={16} className="text-[#FF0000]" />YouTube</a>
+          <nav aria-label="Navigation principale" className="hidden items-center gap-1.5 lg:flex">
+            {nav.map((n, i) => { const Icon = icons[i]; const on = active(n.href); return (
+              <Link key={n.href} href={n.href} aria-current={on ? "page" : undefined}
+                className={`flex min-w-[68px] flex-col items-center gap-1 rounded-xl border px-2.5 py-2 text-[10px] font-semibold uppercase tracking-wider transition xl:min-w-[78px] xl:px-3 ${on ? "border-gold bg-gold/10 text-gold" : "border-white/10 text-white/80 hover:border-gold/50 hover:text-white"}`}>
+                <Icon size={20} strokeWidth={1.6} className="text-gold" />{n.label}
+              </Link>); })}
           </nav>
-          <div className="flex items-center gap-5">
-            <Socials className="" />
-            <Link href={RESERVATION_HREF} className="btn btn-gold hidden !py-2.5 lg:inline-flex">Billetterie</Link>
+          <div className="flex items-center gap-3">
+            <Socials className="hidden 2xl:flex" />
+            <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" className="btn btn-yt hidden !px-4 !py-2.5 lg:inline-flex gap-2"><Youtube size={16} />YouTube</a>
+            <Link href={RESERVATION_HREF} className="btn btn-gold !px-4 !py-2.5 text-[11px] lg:!px-5">Réserver</Link>
           </div>
         </div>
       </header>

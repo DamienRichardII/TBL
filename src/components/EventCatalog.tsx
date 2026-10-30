@@ -3,12 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Calendar, MapPin } from "lucide-react";
-import { events } from "@/data/events";
+import { useSiteData } from "./SiteDataProvider";
 import { RESERVATION_HREF, TICKETING_URL } from "@/data/site";
 
 const filters = ["Tous", "1vs1", "Tournois", "Show", "Passés"] as const;
 
 export function EventCatalog() {
+  const { events } = useSiteData();
   const [f, setF] = useState<(typeof filters)[number]>("Tous");
   const list = events.filter((e) => f === "Tous" || e.tags.includes(f)).sort((a, b) => (a.status === b.status ? 0 : a.status === "À venir" ? -1 : 1));
   return (

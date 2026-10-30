@@ -3,19 +3,22 @@ import Image from "next/image";
 import { Crown } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { players, getPlayer } from "@/data/players";
-import { matches } from "@/data/matches";
+import { getSiteData } from "@/lib/db";
 import { PageShell } from "@/components/PageHero";
 import { PlayerPlaceholder } from "@/components/Placeholder";
 import { Notice } from "@/components/DemoNotice";
 
-export const dynamicParams = false;
-export function generateStaticParams() { return players.map((p) => ({ slug: p.slug })); }
+export const revalidate = 60;
+export async function generateStaticParams() { return (await getSiteData()).players.map((p) => ({ slug: p.slug })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const p = getPlayer((await params).slug); return { title: p ? p.name : "Joueur" };
+  const { players } = await getSiteData();
+  const slug = (await params).slug;
+  const p = players.find((x) => x.slug === slug); return { title: p ? p.name : "Joueur" };
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { players, matches } = await getSiteData();
+  const getPlayer = (slug: string) => players.find((x) => x.slug === slug);
   const p = getPlayer((await params).slug);
   if (!p) notFound();
   const m = matches.find((x) => x.a === p.slug || x.b === p.slug);

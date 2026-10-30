@@ -1,10 +1,11 @@
 "use client";
 import { useState } from "react";
 import { Search } from "lucide-react";
-import { players } from "@/data/players";
+import { useSiteData } from "./SiteDataProvider";
 import { PlayerCard } from "./PlayerCard";
 const tabs = ["Tous", "Lightweight", "Middleweight", "Heavyweight"] as const;
 export function PlayerBrowser() {
+  const { players } = useSiteData();
   const [d, setD] = useState<(typeof tabs)[number]>("Tous");
   const [q, setQ] = useState("");
   const norm = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();

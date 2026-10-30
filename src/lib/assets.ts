@@ -14,7 +14,7 @@ export const IMG = {
     tiegbeAurelien: "/img/posters/tiegbe-aurelien.webp",
   },
   hero: { left: g(24), right: g(28), mobile: g(24) },
-  banner: g(14),
+  banner: g(15),
   gallery: Array.from({ length: 32 }, (_, i) => g(i + 1)),
   tbl01Cover: g(6),
 } as const;

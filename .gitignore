@@ -8,3 +8,5 @@ next-env.d.ts
 
 # Fichiers sources client (photos WhatsApp, PDF) : non versionnés
 assets/
+
+!.env.example

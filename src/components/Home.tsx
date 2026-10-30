@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Trophy, Users, BarChart3, Play, MapPin, Crown, Dribbble, Calendar, Ticket, Mail, Youtube, ArrowRight } from "lucide-react";
+import { Users, BarChart3, Play, MapPin, Dribbble, Calendar, CalendarDays, Ticket, Mail, Youtube, ArrowRight, Swords, CirclePlay } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { Countdown } from "./Countdown";
 import { YouTubeCTA } from "./YouTubeCTA";
@@ -8,8 +8,7 @@ import { VideoGrid } from "./VideoGrid";
 import { RecordLine } from "./RecordBadge";
 import { IMG } from "@/lib/assets";
 import { getLatestVideos, kindOf } from "@/lib/youtube";
-import { getPlayer } from "@/data/players";
-import { matches } from "@/data/matches";
+import { getSiteData } from "@/lib/db";
 import { EVENT_START, RESERVATION_HREF, TICKETING_URL, YOUTUBE_URL } from "@/data/site";
 
 const reservation = TICKETING_URL ? { href: TICKETING_URL, external: true } : { href: RESERVATION_HREF, external: false };
@@ -20,13 +19,12 @@ export function ReserveButton({ className = "" }: { className?: string }) {
 }
 
 const shortcuts = [
-  { Icon: Dribbble, label: "1 contre 1", href: "/a-propos", ext: false },
-  { Icon: Trophy, label: "Événements", href: "/evenements", ext: false },
+  { Icon: CalendarDays, label: "Événements", href: "/evenements", ext: false },
   { Icon: Youtube, label: "YouTube", href: YOUTUBE_URL, ext: true },
   { Icon: Users, label: "Joueurs", href: "/joueurs", ext: false },
   { Icon: BarChart3, label: "Classement", href: "/classement", ext: false },
-  { Icon: Crown, label: "Titres", href: "/a-propos", ext: false },
-  { Icon: MapPin, label: "Orléans", href: "/evenements/tbl-02-the-throne", ext: false },
+  { Icon: Swords, label: "Matchs", href: "/evenements/tbl-02-the-throne", ext: false },
+  { Icon: CirclePlay, label: "Vidéos", href: "/videos", ext: false },
 ];
 const reasons = [
   { Icon: Dribbble, t: "Matchs 1v1 structurés" },
@@ -36,25 +34,33 @@ const reasons = [
   { Icon: Mail, t: "Contact médias et partenaires" },
 ];
 
+const stats = [{ n: "8", t: "Matchs" }, { n: "16", t: "Joueurs" }, { n: "3", t: "Divisions" }, { n: "1", t: "Mouvement" }];
+
 export function Hero() {
   return (
-    <section className="relative isolate flex min-h-[640px] items-end justify-center overflow-hidden bg-ink pb-10 pt-24 lg:h-auto lg:flex-1 lg:pb-10">
-      <div className="absolute inset-0 -z-10 grid grid-cols-1 lg:grid-cols-2">
-        <div className="relative"><Image src={IMG.hero.left} alt="" fill priority sizes="(min-width:1024px) 50vw, 100vw" className="object-cover object-[50%_30%] grayscale contrast-125" /></div>
-        <div className="relative hidden lg:block"><Image src={IMG.hero.right} alt="" fill priority sizes="50vw" className="object-cover object-[50%_30%] grayscale contrast-125" /></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/75" />
-        <div className="gold-glow absolute inset-x-0 bottom-0 h-1/2 opacity-80" />
+    <section className="relative isolate overflow-hidden bg-ink pt-24 lg:flex lg:flex-1 lg:items-center lg:pt-[72px]">
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -right-1/4 top-0 h-full w-3/4 bg-[radial-gradient(closest-side,rgba(201,161,92,.22),transparent)]" />
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink to-transparent" />
       </div>
-      <div className="flex w-full flex-col items-center px-4 text-center">
-        <h1 className="sr-only">TBL — The Ballin League, basketball 1v1</h1>
-        <Image src={IMG.logo.src} alt="TBL – The Ballin League" width={IMG.logo.w} height={IMG.logo.h} priority className="h-[clamp(150px,27vh,300px)] w-auto" />
-        <p className="title mt-3 text-3xl tracking-[0.1em] lg:text-5xl">The Ballin League</p>
-        <p className="title gold-text mt-2 text-sm tracking-[0.3em] lg:text-base">More than a game. A movement.</p>
-        <div className="mt-6 flex w-full max-w-[340px] flex-col gap-3 lg:max-w-none lg:flex-row lg:justify-center">
-          <ReserveButton className="lg:min-w-[250px] lg:!py-3.5" />
-          <Link href="/evenements" className="btn btn-ghost lg:min-w-[250px] lg:!py-3.5">Voir les événements</Link>
+      <div className="mx-auto grid w-full max-w-page items-center gap-6 px-4 lg:grid-cols-[1.05fr_1fr] lg:gap-4 lg:px-6">
+        <div className="pb-2 pt-4 lg:py-10">
+          <h1 className="sr-only">TBL — The Ballin League, basketball 1v1</h1>
+          <p className="title gold-text text-[12px] tracking-[0.4em] lg:text-sm">The Ballin League</p>
+          <p aria-hidden className="title mt-4 text-[clamp(3rem,9.5vw,5rem)] leading-[0.92] lg:text-[clamp(3.25rem,6.2vw,7rem)]">More than<br />a game.<span className="gold-text mt-1 block">A movement.</span></p>
+          <p className="title mt-5 text-[12px] tracking-[0.3em] text-white/70 lg:text-sm">La ligue 1v1 de référence en France</p>
+          <ul className="mt-6 grid max-w-xl grid-cols-4 overflow-hidden rounded-xl border border-white/15 bg-white/[0.03]">
+            {stats.map((x) => <li key={x.t} className="border-r border-white/10 px-2 py-3 text-center last:border-r-0"><span className="title gold-text block text-3xl lg:text-4xl">{x.n}</span><span className="mt-1 block text-[10px] font-semibold uppercase tracking-widest text-white/60">{x.t}</span></li>)}
+          </ul>
+          <div className="mt-7 grid max-w-xl gap-3 sm:grid-cols-2">
+            <ReserveButton className="!py-4 shadow-[0_10px_40px_-10px_rgba(201,161,92,.7)]" />
+            <Link href="/evenements" className="btn btn-ghost !py-4">Voir les événements</Link>
+          </div>
+          <YouTubeCTA compact className="mt-3 max-w-xl sm:grid sm:grid-cols-2 [&>*]:!py-4" />
         </div>
-        <YouTubeCTA compact className="mt-3 max-w-[340px] sm:max-w-none" />
+        <div className="relative mx-auto h-[min(110vw,520px)] w-full max-w-[520px] lg:h-[min(74vh,760px)] lg:max-w-none">
+          <Image src="/img/hero-player.webp" alt="Joueur TBL" fill priority sizes="(min-width:1024px) 45vw, 100vw" className="object-contain object-bottom drop-shadow-[0_0_60px_rgba(201,161,92,.25)]" />
+        </div>
       </div>
     </section>
   );
@@ -63,14 +69,14 @@ export function Hero() {
 export function Shortcuts() {
   return (
     <section aria-label="Raccourcis" className="border-y border-line bg-ink">
-      <ul className="mx-auto grid max-w-page grid-cols-4 gap-y-6 px-4 py-6 lg:grid-cols-7 lg:px-6">
-        {shortcuts.map(({ Icon, label, href, ext }) => (
-          <li key={label}>
-            {ext
-              ? <a href={href} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-3 text-[12px] text-white/90 transition hover:text-[#ff4d4d]"><Icon size={30} strokeWidth={1.4} className="text-[#FF0000]" />{label}</a>
-              : <Link href={href} className="flex flex-col items-center gap-3 text-[12px] text-white/90 transition hover:text-gold"><Icon size={30} strokeWidth={1.4} />{label}</Link>}
-          </li>
-        ))}
+      <ul className="mx-auto grid max-w-page grid-cols-3 gap-3 px-4 py-5 lg:grid-cols-6 lg:px-6">
+        {shortcuts.map(({ Icon, label, href, ext }) => {
+          const cls = "group flex flex-col items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-2 py-5 text-[13px] font-medium text-white transition duration-300 hover:-translate-y-0.5 hover:border-gold/60 hover:bg-gold/5";
+          const icon = <Icon size={32} strokeWidth={1.5} className="text-gold transition group-hover:scale-110" />;
+          return <li key={label}>{ext
+            ? <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>{icon}{label}</a>
+            : <Link href={href} className={cls}>{icon}{label}</Link>}</li>;
+        })}
       </ul>
     </section>
   );
@@ -109,13 +115,15 @@ export function NextEvent() {
 }
 
 const featured = [8, 6, 7, 5];
-export function FeaturedMatches() {
-  const list = featured.map((g) => matches.find((m) => m.game === g)!).filter(Boolean);
+export async function FeaturedMatches() {
+  const { matches, players } = await getSiteData();
+  const getPlayer = (slug: string) => players.find((p) => p.slug === slug);
+  const list = featured.map((g) => matches.find((m) => m.game === g)).filter((m): m is NonNullable<typeof m> => Boolean(m) && Boolean(getPlayer(m!.a)) && Boolean(getPlayer(m!.b)));
   return (
     <section className="bg-ink py-12 lg:py-16">
       <div className="mx-auto max-w-page px-4 lg:px-6">
         <div className="mb-6 flex items-end justify-between gap-4">
-          <div><p className="title gold-text text-sm tracking-[0.3em]">TBL 02 — The Throne</p><h2 className="title mt-2 text-3xl lg:text-5xl">Les matchs à ne pas manquer</h2></div>
+          <div><p className="title gold-text text-sm tracking-[0.3em]">TBL 02 — The Throne</p><h2 className="title mt-2 text-4xl lg:text-6xl">Les matchs à ne pas manquer</h2></div>
           <Link href="/evenements/tbl-02-the-throne" className="hidden items-center gap-2 text-sm text-white/80 hover:text-gold sm:flex">Voir les 8 matchs <ArrowRight size={16} /></Link>
         </div>
         <Reveal>
@@ -140,12 +148,13 @@ export function FeaturedMatches() {
 }
 
 export async function WatchSection() {
-  const vids = (await getLatestVideos(6)).map((v) => ({ ...v, kind: kindOf(v.title) }));
+  const { videoOverrides } = await getSiteData();
+  const vids = (await getLatestVideos(30)).filter((v) => !videoOverrides[v.id]?.hidden).map((v) => ({ ...v, kind: kindOf(v.title, videoOverrides[v.id]?.kind) }));
   return (
     <section className="border-t border-line bg-neutral-950 py-12 lg:py-16">
       <div className="mx-auto max-w-page px-4 lg:px-6">
         <p className="title text-sm tracking-[0.3em] text-[#ff4d4d]">YouTube</p>
-        <h2 className="title mt-2 text-3xl lg:text-5xl">Regardez nos matchs</h2>
+        <h2 className="title mt-2 text-4xl lg:text-6xl">Regardez nos vidéos YouTube</h2>
         <p className="mt-3 max-w-2xl text-white/65">Retrouve les matchs, highlights et teasers de TBL directement ici, et abonne-toi pour ne rien rater.</p>
         <div className="mt-6"><VideoGrid videos={vids} limit={6} /></div>
         <YouTubeCTA className="mt-8" />
@@ -156,12 +165,12 @@ export async function WatchSection() {
 
 export function Banner() {
   return (
-    <section className="relative isolate overflow-hidden py-20 text-center">
-      <Image src={IMG.banner} alt="" fill sizes="100vw" className="-z-10 object-cover grayscale" />
-      <div className="absolute inset-0 -z-10 bg-ink/75" />
+    <section className="relative isolate overflow-hidden py-24 text-center lg:py-40">
+      <Image src={IMG.banner} alt="" fill sizes="100vw" className="-z-10 object-cover object-[50%_22%] grayscale" />
+      <div className="absolute inset-0 -z-10 bg-ink/70" />
       <div className="gold-glow absolute inset-x-0 bottom-0 -z-10 h-full" />
       <Reveal>
-        <h2 className="title text-3xl leading-tight lg:text-5xl">Une plateforme<br /><span className="gold-text">pour le basketball 1vs1</span></h2>
+        <h2 className="title text-4xl leading-tight lg:text-7xl">Une plateforme<br /><span className="gold-text">pour le basketball 1vs1</span></h2>
         <Link href="/a-propos" className="btn btn-light mt-8 lg:min-w-[280px]">Découvrir la ligue</Link>
       </Reveal>
     </section>

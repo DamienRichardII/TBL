@@ -31,3 +31,6 @@ npm start
 - `src/components/` : composants réutilisables · `public/img/` : images optimisées (WebP) issues de `assets/`
 
 Les originaux restent dans `assets/` (non modifiés). Voir `ASSETS_MANQUANTS.md` et `POINTS_A_VALIDER_TBL.md`.
+
+## Backend (Supabase)
+Les joueurs, matchs, événements, classements, catégories de vidéos et messages de contact vivent dans Supabase et se gèrent depuis `/admin` (voir `ADMIN_TBL.md`). Variables : `.env.example`. Sans ces variables, le site affiche les données de `src/data/`.

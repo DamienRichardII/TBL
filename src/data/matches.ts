@@ -2,7 +2,7 @@ import type { Match } from "@/types";
 import { IMG } from "@/lib/assets";
 
 export const matches: Match[] = [
-  { game: 8, label: "Main event · Titre Middleweight", division: "Middleweight", title: true, a: "samuel-marwakal", b: "kieran", poster: IMG.posters.samuelKeran, posterAlt: "Affiche du match Samuel contre Kieran" },
+  { game: 8, label: "Main event · Titre Middleweight", division: "Middleweight", title: true, a: "samuel-marwakal", b: "kieran", poster: IMG.posters.samuelKeran, posterAlt: "Affiche du match Samuel contre Keran" },
   { game: 7, label: "Middleweight", division: "Middleweight", a: "kenny-brown", b: "bryan-pamba", poster: IMG.posters.kennyBryan, posterAlt: "Affiche du match Kenny contre Bryan" },
   { game: 6, label: "Heavyweight", division: "Heavyweight", a: "aurelien", b: "tiegbe-bamba", poster: IMG.posters.tiegbeAurelien, posterAlt: "Affiche du match Tiegbe contre Aurélien" },
   { game: 5, label: "Lightweight", division: "Lightweight", a: "adama", b: "leian", poster: IMG.posters.adamaLeian, posterAlt: "Affiche du match Adama contre Leïan" },

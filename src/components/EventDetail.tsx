@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Calendar, MapPin, Clock, Ticket } from "lucide-react";
-import { matches } from "@/data/matches";
+import { useSiteData } from "./SiteDataProvider";
 import { MatchCard } from "./MatchCard";
 import { Notice } from "./DemoNotice";
 import { IMG } from "@/lib/assets";
@@ -12,6 +12,7 @@ import { RESERVATION_HREF, TICKETING_URL } from "@/data/site";
 const tabs = ["Infos", "Matchs", "Résultats", "Galerie"] as const;
 
 export function EventDetail() {
+  const { matches, players } = useSiteData();
   const [tab, setTab] = useState<(typeof tabs)[number]>("Infos");
   return (
     <>
@@ -48,15 +49,15 @@ export function EventDetail() {
         {tab === "Infos" && (
           <div className="max-w-3xl space-y-4 text-[15px] leading-relaxed text-white/80">
             <p>TBL 02 — The Throne réunit huit confrontations 1v1 et seize joueurs répartis dans les trois divisions officielles de la ligue : Lightweight, Middleweight et Heavyweight.</p>
-            <p>Le main event oppose Samuel et Kieran pour le titre Middleweight. Deux matchs de qualification (tryouts) complètent la carte.</p>
+            <p>Le main event oppose Samuel et Keran pour le titre Middleweight. Deux matchs de qualification (tryouts) complètent la carte.</p>
             <p className="text-[13px] text-white/50">Carte sous réserve de validation finale des affiches et des participants.</p>
           </div>
         )}
         {tab === "Matchs" && (
-          <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{matches.map((m) => <li key={m.game}><MatchCard m={m} /></li>)}</ul>
+          <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{matches.map((m) => <li key={m.game}><MatchCard m={m} players={players} /></li>)}</ul>
         )}
         {tab === "Résultats" && (matches.some((m) => m.result)
-          ? <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{matches.filter((m) => m.result).map((m) => <li key={m.game}><MatchCard m={m} /></li>)}</ul>
+          ? <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{matches.filter((m) => m.result).map((m) => <li key={m.game}><MatchCard m={m} players={players} /></li>)}</ul>
           : <Notice>Les résultats des huit matchs seront publiés ici juste après l’événement.</Notice>)}
         {tab === "Galerie" && (<>
           <p className="mb-4 text-[13px] text-white/55">Photos issues des événements TBL précédents (attribution à confirmer).</p>

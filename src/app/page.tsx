@@ -1,6 +1,6 @@
 import { Hero, Shortcuts, NextEvent, FeaturedMatches, WatchSection, Banner, Reasons } from "@/components/Home";
 import { Partners } from "@/components/Partners";
-export const revalidate = 3600;
+export const revalidate = 60;
 export default function Home() {
   return (
     <>

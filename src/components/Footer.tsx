@@ -9,6 +9,7 @@ export function Footer() {
         <div className="flex items-center gap-3"><Logo height={44} /><span className="title text-lg tracking-[0.12em]">The Ballin League</span></div>
         <nav aria-label="Pied de page" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[13px] text-white/70">
           {nav.map((n) => <Link key={n.href} href={n.href} className="hover:text-white">{n.label}</Link>)}
+          <Link href="/a-propos" className="hover:text-white">À propos</Link>
           <Link href="/boutique" className="hover:text-white">Boutique</Link>
           <Link href="/mentions-legales" className="hover:text-white">Mentions légales</Link>
           <Link href="/confidentialite" className="hover:text-white">Confidentialité</Link>

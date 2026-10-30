@@ -4,13 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { Crown } from "lucide-react";
 import { divisions } from "@/data/site";
-import { rankings } from "@/data/rankings";
-import { getPlayer } from "@/data/players";
+import { useSiteData } from "./SiteDataProvider";
 import { PlayerPlaceholder } from "./Placeholder";
 import { Notice } from "./DemoNotice";
 import type { Division } from "@/types";
 
 export function DivisionTabs() {
+  const { rankings, players } = useSiteData();
+  const getPlayer = (slug: string) => players.find((p) => p.slug === slug);
   const [d, setD] = useState<Division>("Lightweight");
   const cur = divisions.find((x) => x.name === d)!;
   const rows = rankings[d];

@@ -30,3 +30,12 @@ En attente (nécessite le feu vert backend ou des éléments TBL) :
 6. Mentions légales / confidentialité : compléter les champs entre crochets (éditeur, SIRET, adresse, e-mail).
 7. Orthographe « Kieran » (PDF) ou « Keran » (affiche et titres des vidéos YouTube) : à trancher.
 8. Horaire de l'affiche (« 16-23 ») vs 18 h du dossier.
+
+
+## Backend Supabase (v3) — état
+Fait : base de données (joueurs, matchs, événements, classements, catégories de vidéos, messages), espace `/admin` (voir `ADMIN_TBL.md`), formulaire de contact enregistré dans la base, catégories de vidéos corrigeables.
+À faire par TBL / DamCompany :
+1. Créer les comptes administrateurs (procédure dans `ADMIN_TBL.md`) : aucune adresse n'est autorisée tant que cela n'est pas fait.
+2. Fournir l'adresse e-mail officielle : les messages sont pour l'instant consultés dans l'admin, sans envoi d'e-mail. L'envoi (ex. Resend) sera ajouté ensuite.
+3. Les bilans ne sont pas recalculés automatiquement après un match : les mettre à jour dans l'onglet Joueurs.
+4. Accès payant au livestream : non prévu à ce stade.

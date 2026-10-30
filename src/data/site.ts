@@ -17,7 +17,7 @@ export const nav = [
   { href: "/classement", label: "Classement" },
   { href: "/joueurs", label: "Joueurs" },
   { href: "/videos", label: "Vidéos" },
-  { href: "/a-propos", label: "À propos" },
+  { href: "/livestream", label: "Livestream" },
   { href: "/contact", label: "Contact" },
 ];
 export const RESERVATION_HREF = "/reservation/tbl-02-the-throne";

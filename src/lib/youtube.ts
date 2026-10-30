@@ -27,10 +27,15 @@ export async function getLatestVideos(limit = 15): Promise<YtVideo[]> {
 }
 
 export type VideoKind = "Matchs complets" | "Highlights" | "Teasers";
-/** Classement automatique selon le titre (mots-clés) — ajustable. */
-export function kindOf(title: string): VideoKind {
+/**
+ * Classement automatique selon le titre (mots-clés), utilisé quand aucune catégorie n'a été choisie
+ * dans l'espace administrateur. Une catégorie choisie dans l'admin l'emporte toujours.
+ */
+export function kindOf(title: string, override?: VideoKind): VideoKind {
+  if (override) return override;
   const t = title.toLowerCase();
-  if (/(teaser|trailer|annonce|bande.?annonce|promo)/.test(t)) return "Teasers";
-  if (/(highlight|résumé|resume|best of|moments|recap)/.test(t)) return "Highlights";
-  return "Matchs complets";
+  if (/(teaser|trailer|annonce|promo|bient[oô]t|coming soon|d[ée]voil|reveal|save the date|avant[- ]go[uû]t|prochain)/.test(t)) return "Teasers";
+  if (/(highlight|r[ée]sum[ée]|best[- ]?of|recap|moments?)/.test(t)) return "Highlights";
+  if (/(\bvs\b|\bep\.? ?\d|match complet|full game|full match|[ée]pisode)/.test(t)) return "Matchs complets";
+  return "Highlights";
 }

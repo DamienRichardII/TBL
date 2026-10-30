@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Match, Player } from "@/types";
-import { getPlayer } from "@/data/players";
 import { Crown } from "lucide-react";
 import { RecordLine } from "./RecordBadge";
 
-export function MatchCard({ m }: { m: Match }) {
-  const a = getPlayer(m.a)!, b = getPlayer(m.b)!;
+export function MatchCard({ m, players }: { m: Match; players: Player[] }) {
+  const getPlayer = (slug: string) => players.find((p) => p.slug === slug);
+  const a = getPlayer(m.a), b = getPlayer(m.b);
+  if (!a || !b) return null;
   return (
     <article className="overflow-hidden rounded-2xl border border-line bg-neutral-900">
       <div className="relative aspect-[4/5] w-full">

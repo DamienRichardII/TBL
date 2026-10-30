@@ -3,6 +3,8 @@ import { Oswald, Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SiteDataProvider } from "@/components/SiteDataProvider";
+import { getSiteData } from "@/lib/db";
 
 const display = Oswald({ subsets: ["latin"], variable: "--font-display", weight: ["400", "500", "600", "700"] });
 const sans = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -20,11 +22,12 @@ export const metadata: Metadata = {
 };
 export const viewport: Viewport = { themeColor: "#08090B", width: "device-width", initialScale: 1 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const data = await getSiteData();
   return (
     <html lang="fr" className={`${display.variable} ${sans.variable}`}>
       <body><a href="#contenu" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-white focus:p-2 focus:text-ink">Aller au contenu</a>
-        <Header /><div id="contenu">{children}</div><Footer /></body>
+        <SiteDataProvider data={data}><Header /><div id="contenu">{children}</div><Footer /></SiteDataProvider></body>
     </html>
   );
 }
