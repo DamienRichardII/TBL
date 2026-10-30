@@ -97,12 +97,12 @@ export function NextEvent() {
     <section className="relative isolate overflow-hidden bg-ink">
       <div className="mx-auto grid max-w-[1600px] grid-cols-2 lg:grid-cols-[1fr_minmax(0,1.15fr)_1fr]">
         <div className="relative aspect-[4/5] overflow-hidden lg:order-1 lg:aspect-auto lg:min-h-[560px]">
-          <div className={`${side} left-0`}><Image src={IMG.posters.samuelKeran} alt="Samuel — TBL 02" fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover object-[50%_9%]" /></div>
+          <div className={`${side} left-0`}><Image src={IMG.posters.samuelKeran} alt="Keran — TBL 02" fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover object-[50%_9%]" /></div>
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-ink max-lg:hidden" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent lg:hidden" />
         </div>
         <div className="relative aspect-[4/5] overflow-hidden lg:order-3 lg:aspect-auto lg:min-h-[560px]">
-          <div className={`${side} right-0`}><Image src={IMG.posters.samuelKeran} alt="Keran — TBL 02" fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover object-[50%_9%]" /></div>
+          <div className={`${side} right-0`}><Image src={IMG.posters.samuelKeran} alt="Samuel — TBL 02" fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover object-[50%_9%]" /></div>
           <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-ink max-lg:hidden" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent lg:hidden" />
         </div>
@@ -111,7 +111,7 @@ export function NextEvent() {
           <p className="title gold-text text-sm tracking-[0.35em]">Prochain événement</p>
           <h2 className="title mt-3 text-6xl leading-none sm:text-7xl lg:text-8xl">TBL 02<span className="gold-text mt-1 block text-4xl italic sm:text-5xl lg:text-6xl">The Throne</span></h2>
           <p className="mt-5 inline-block border-y border-gold/60 px-5 py-1.5 text-[11px] font-bold uppercase tracking-[0.3em] text-gold">Middleweight title</p>
-          <p className="title mt-5 text-3xl text-white lg:text-4xl">Samuel <span className="gold-text">vs</span> Keran</p>
+          <p className="title mt-5 text-3xl text-white lg:text-4xl">Keran <span className="gold-text">vs</span> Samuel</p>
           <ul className="mt-5 space-y-2 text-[14px] text-white/85">
             <li className="flex items-center justify-center gap-2"><Calendar size={16} className="text-gold" /> Samedi 19 décembre 2026</li>
             <li className="flex items-center justify-center gap-2"><MapPin size={16} className="shrink-0 text-gold" /> Gymnase Victor Fouillade · Orléans</li>
