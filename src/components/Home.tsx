@@ -43,6 +43,12 @@ export function Hero() {
         <div className="absolute -right-1/4 top-0 h-full w-3/4 bg-[radial-gradient(closest-side,rgba(201,161,92,.22),transparent)]" />
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink to-transparent" />
       </div>
+      <div aria-hidden className="absolute inset-y-0 right-0 -z-10 hidden w-[60%] lg:block">
+        <Image src="/img/hero-bg.webp" alt="" fill priority sizes="60vw" className="object-cover object-[50%_86%]" />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/40 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-ink to-transparent" />
+      </div>
       <div className="mx-auto grid w-full max-w-page items-center gap-6 px-4 lg:grid-cols-[1.05fr_1fr] lg:gap-4 lg:px-6">
         <div className="pb-2 pt-4 lg:py-10">
           <h1 className="sr-only">TBL — The Ballin League, basketball 1v1</h1>
@@ -58,8 +64,9 @@ export function Hero() {
           </div>
           <YouTubeCTA compact className="mt-3 max-w-xl sm:grid sm:grid-cols-2 [&>*]:!py-4" />
         </div>
-        <div className="relative mx-auto h-[min(110vw,520px)] w-full max-w-[520px] lg:h-[min(74vh,760px)] lg:max-w-none">
-          <Image src="/img/hero-player.webp" alt="Joueur TBL" fill priority sizes="(min-width:1024px) 45vw, 100vw" className="object-contain object-bottom drop-shadow-[0_0_60px_rgba(201,161,92,.25)]" />
+        <div className="relative mx-auto h-[min(120vw,560px)] w-full max-w-[520px] overflow-hidden rounded-2xl lg:hidden">
+          <Image src="/img/hero-bg.webp" alt="Samuel, joueur TBL" fill priority sizes="100vw" className="object-cover object-[50%_84%]" />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
       </div>
     </section>
