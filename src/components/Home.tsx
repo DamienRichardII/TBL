@@ -5,6 +5,7 @@ import { Reveal } from "./Reveal";
 import { Countdown } from "./Countdown";
 import { YouTubeCTA } from "./YouTubeCTA";
 import { VideoGrid } from "./VideoGrid";
+import { MatchCarousel } from "./MatchCarousel";
 import { RecordLine } from "./RecordBadge";
 import { IMG } from "@/lib/assets";
 import { getLatestVideos, kindOf } from "@/lib/youtube";
@@ -38,36 +39,37 @@ const stats = [{ n: "8", t: "Matchs" }, { n: "16", t: "Joueurs" }, { n: "3", t: 
 
 export function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-ink pt-24 lg:flex lg:flex-1 lg:items-center lg:pt-[72px]">
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -right-1/4 top-0 h-full w-3/4 bg-[radial-gradient(closest-side,rgba(201,161,92,.22),transparent)]" />
+    <section className="relative isolate overflow-hidden bg-ink pt-24 lg:flex lg:min-h-svh lg:items-center lg:pt-[72px]">
+      <div aria-hidden className="absolute inset-y-0 right-0 -z-10 hidden w-[68%] lg:block">
+        <Image src="/img/hero-bg.webp" alt="" fill priority sizes="68vw" className="object-cover object-[50%_86%]" />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/55 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink to-transparent" />
       </div>
-      <div aria-hidden className="absolute inset-y-0 right-0 -z-10 hidden w-[60%] lg:block">
-        <Image src="/img/hero-bg.webp" alt="" fill priority sizes="60vw" className="object-cover object-[50%_86%]" />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/40 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-ink to-transparent" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -left-24 top-1/4 h-2/3 w-64 bg-[radial-gradient(closest-side,rgba(201,161,92,.28),transparent)] blur-xl" />
+        <div className="absolute -right-24 bottom-0 h-1/2 w-72 bg-[radial-gradient(closest-side,rgba(201,161,92,.35),transparent)] blur-xl" />
       </div>
-      <div className="mx-auto grid w-full max-w-page items-center gap-6 px-4 lg:grid-cols-[1.05fr_1fr] lg:gap-4 lg:px-6">
-        <div className="pb-2 pt-4 lg:py-10">
+      <div className="mx-auto w-full max-w-page px-4 lg:px-6">
+        <div className="relative pb-6 pt-4 lg:max-w-[62%] lg:py-12 lg:pl-6">
+          <span aria-hidden className="absolute bottom-6 left-0 top-4 hidden w-[3px] bg-gradient-to-b from-gold-hi via-gold to-transparent lg:block lg:bottom-12 lg:top-12" />
           <h1 className="sr-only">TBL — The Ballin League, basketball 1v1</h1>
           <p className="title gold-text text-[12px] tracking-[0.4em] lg:text-sm">The Ballin League</p>
-          <p aria-hidden className="title mt-4 text-[clamp(3rem,9.5vw,5rem)] leading-[0.92] lg:text-[clamp(3.25rem,6.2vw,7rem)]">More than<br />a game.<span className="gold-text mt-1 block">A movement.</span></p>
-          <p className="title mt-5 text-[12px] tracking-[0.3em] text-white/70 lg:text-sm">La ligue 1v1 de référence en France</p>
-          <ul className="mt-6 grid max-w-xl grid-cols-4 overflow-hidden rounded-xl border border-white/15 bg-white/[0.03]">
-            {stats.map((x) => <li key={x.t} className="border-r border-white/10 px-2 py-3 text-center last:border-r-0"><span className="title gold-text block text-3xl lg:text-4xl">{x.n}</span><span className="mt-1 block text-[10px] font-semibold uppercase tracking-widest text-white/60">{x.t}</span></li>)}
+          <p aria-hidden className="title mt-3 text-[clamp(3.25rem,13vw,5.25rem)] leading-[0.9] drop-shadow-[0_4px_30px_rgba(0,0,0,.6)] lg:text-[clamp(4rem,7.4vw,9rem)]">More than<br />a game.<span className="gold-text block">A movement.</span></p>
+          <p className="title mt-5 text-[12px] tracking-[0.3em] text-white/80 lg:text-base">La ligue 1v1 de référence en France</p>
+          <ul className="mt-6 flex max-w-xl divide-x divide-white/15">
+            {stats.map((x) => <li key={x.t} className="flex-1 px-2 text-center first:pl-0 lg:text-left lg:first:pl-0 lg:px-5"><span className="title gold-text block text-3xl lg:text-4xl">{x.n}</span><span className="block text-[10px] font-semibold uppercase tracking-widest text-white/60">{x.t}</span></li>)}
           </ul>
-          <div className="mt-7 grid max-w-xl gap-3 sm:grid-cols-2">
-            <ReserveButton className="!py-4 shadow-[0_10px_40px_-10px_rgba(201,161,92,.7)]" />
-            <Link href="/evenements" className="btn btn-ghost !py-4">Voir les événements</Link>
+          <div className="mt-8 flex max-w-xl flex-col gap-3 sm:flex-row">
+            <ReserveButton className="!py-4 sm:flex-1 shadow-[0_10px_40px_-10px_rgba(201,161,92,.7)]" />
+            <Link href="/evenements/tbl-02-the-throne" className="btn btn-ghost !py-4 sm:flex-1">Découvrir TBL 02 <ArrowRight size={16} /></Link>
           </div>
-          <YouTubeCTA compact className="mt-3 max-w-xl sm:grid sm:grid-cols-2 [&>*]:!py-4" />
         </div>
-        <div className="relative mx-auto h-[min(120vw,560px)] w-full max-w-[520px] overflow-hidden rounded-2xl lg:hidden">
-          <Image src="/img/hero-bg.webp" alt="Samuel, joueur TBL" fill priority sizes="100vw" className="object-cover object-[50%_84%]" />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
+      </div>
+      <div className="relative mx-4 mb-0 h-[min(125vw,560px)] overflow-hidden rounded-2xl lg:hidden">
+        <Image src="/img/hero-bg.webp" alt="Samuel, joueur TBL" fill priority sizes="100vw" className="object-cover object-[50%_84%]" />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-ink to-transparent" />
       </div>
     </section>
   );
@@ -90,30 +92,34 @@ export function Shortcuts() {
 }
 
 export function NextEvent() {
+  const side = "absolute top-0 h-full w-[200%] max-w-none";
   return (
-    <section className="relative overflow-hidden bg-ink py-12 lg:py-16">
-      <div className="gold-glow pointer-events-none absolute inset-x-0 bottom-0 h-2/3 opacity-60" />
-      <div className="relative mx-auto max-w-page px-4 lg:px-6">
-        <p className="title gold-text text-sm tracking-[0.3em]">Prochain événement</p>
-        <div className="mt-4 grid overflow-hidden rounded-2xl border border-gold/40 bg-neutral-950 shadow-[0_0_80px_-30px_rgba(201,161,92,.5)] lg:grid-cols-[1.1fr_1fr]">
-          <div className="flex flex-col justify-center gap-5 p-6 lg:p-10">
-            <h2 className="title text-5xl sm:text-6xl lg:text-7xl">TBL 02<span className="gold-text block text-3xl sm:text-4xl lg:text-5xl">The Throne</span></h2>
-            <div className="gold-rule w-40" />
-            <ul className="space-y-3 text-[15px]">
-              <li className="flex items-center gap-3"><Calendar size={18} className="text-gold" /> Samedi 19 décembre 2026 · 18 h 00</li>
-              <li className="flex items-start gap-3"><MapPin size={18} className="mt-0.5 shrink-0 text-gold" /><span>Orléans · gymnase Victor Fouillade <span className="text-white/50">(à confirmer)</span></span></li>
-              <li className="flex items-center gap-3"><Ticket size={18} className="text-gold" /> Accès gratuit, réservation obligatoire</li>
-            </ul>
-            <Countdown target={EVENT_START} />
-            <p className="text-sm text-white/65">8 matchs, 16 joueurs, 3 divisions. Un billet réservé est nécessaire pour entrer.</p>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <ReserveButton />
-              <Link href="/evenements/tbl-02-the-throne" className="btn btn-ghost">Voir les détails</Link>
-            </div>
-          </div>
-          <div className="relative min-h-[420px] lg:min-h-[600px]">
-            <Image src={IMG.posters.group} alt="Affiche TBL 02 — les seize joueurs de la soirée" fill sizes="(min-width:1024px) 45vw, 100vw" className="object-cover" />
-            <div className="absolute right-4 top-4 border border-gold/80 bg-ink/80 px-3 py-2 text-center"><span className="title block text-2xl leading-none">19</span><span className="title gold-text block text-xl leading-none">DÉC</span><span className="title block text-sm leading-tight">2026</span></div>
+    <section className="relative isolate overflow-hidden bg-ink">
+      <div className="mx-auto grid max-w-[1600px] grid-cols-2 lg:grid-cols-[1fr_minmax(0,1.15fr)_1fr]">
+        <div className="relative aspect-[4/5] overflow-hidden lg:order-1 lg:aspect-auto lg:min-h-[560px]">
+          <div className={`${side} left-0`}><Image src={IMG.posters.samuelKeran} alt="Samuel — TBL 02" fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover object-[50%_9%]" /></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-ink max-lg:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent lg:hidden" />
+        </div>
+        <div className="relative aspect-[4/5] overflow-hidden lg:order-3 lg:aspect-auto lg:min-h-[560px]">
+          <div className={`${side} right-0`}><Image src={IMG.posters.samuelKeran} alt="Keran — TBL 02" fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover object-[50%_9%]" /></div>
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-ink max-lg:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent lg:hidden" />
+        </div>
+        <div className="relative z-10 col-span-2 flex flex-col items-center justify-center px-4 pb-14 pt-2 text-center lg:order-2 lg:col-span-1 lg:px-0 lg:py-16">
+          <div className="gold-glow pointer-events-none absolute inset-0 -z-10 opacity-70" />
+          <p className="title gold-text text-sm tracking-[0.35em]">Prochain événement</p>
+          <h2 className="title mt-3 text-6xl leading-none sm:text-7xl lg:text-8xl">TBL 02<span className="gold-text mt-1 block text-4xl italic sm:text-5xl lg:text-6xl">The Throne</span></h2>
+          <p className="mt-5 inline-block border-y border-gold/60 px-5 py-1.5 text-[11px] font-bold uppercase tracking-[0.3em] text-gold">Middleweight title</p>
+          <p className="title mt-5 text-3xl text-white lg:text-4xl">Samuel <span className="gold-text">vs</span> Keran</p>
+          <ul className="mt-5 space-y-2 text-[14px] text-white/85">
+            <li className="flex items-center justify-center gap-2"><Calendar size={16} className="text-gold" /> Samedi 19 décembre 2026</li>
+            <li className="flex items-center justify-center gap-2"><MapPin size={16} className="shrink-0 text-gold" /> Gymnase Victor Fouillade · Orléans</li>
+          </ul>
+          <Countdown target={EVENT_START} className="mt-6 justify-center" />
+          <div className="mt-7 flex w-full max-w-sm flex-col gap-3">
+            <ReserveButton />
+            <Link href="/evenements/tbl-02-the-throne" className="btn btn-ghost">Voir tous les matchs <ArrowRight size={16} /></Link>
           </div>
         </div>
       </div>
@@ -121,34 +127,20 @@ export function NextEvent() {
   );
 }
 
-const featured = [8, 6, 7, 5];
 export async function FeaturedMatches() {
   const { matches, players } = await getSiteData();
-  const getPlayer = (slug: string) => players.find((p) => p.slug === slug);
-  const list = featured.map((g) => matches.find((m) => m.game === g)).filter((m): m is NonNullable<typeof m> => Boolean(m) && Boolean(getPlayer(m!.a)) && Boolean(getPlayer(m!.b)));
+  const nm = (slug: string) => players.find((p) => p.slug === slug)?.name;
+  const items = matches.filter((m) => nm(m.a) && nm(m.b)).sort((x, y) => y.game - x.game)
+    .map((m) => ({ game: m.game, label: m.label, poster: m.poster, alt: m.posterAlt, a: nm(m.a)!, b: nm(m.b)!, main: m.game === 8 }));
   return (
-    <section className="bg-ink py-12 lg:py-16">
+    <section className="relative bg-ink pb-16 pt-6 lg:pb-24">
       <div className="mx-auto max-w-page px-4 lg:px-6">
-        <div className="mb-6 flex items-end justify-between gap-4">
-          <div><p className="title gold-text text-sm tracking-[0.3em]">TBL 02 — The Throne</p><h2 className="title mt-2 text-4xl lg:text-6xl">Les matchs à ne pas manquer</h2></div>
-          <Link href="/evenements/tbl-02-the-throne" className="hidden items-center gap-2 text-sm text-white/80 hover:text-gold sm:flex">Voir les 8 matchs <ArrowRight size={16} /></Link>
+        <div className="mb-8 flex items-end justify-between gap-4">
+          <div><p className="title gold-text text-sm tracking-[0.3em]">TBL 02 — The Throne</p><h2 className="title mt-2 text-4xl lg:text-6xl">La carte des 8 matchs</h2></div>
+          <Link href="/evenements/tbl-02-the-throne" className="hidden items-center gap-2 text-sm text-white/80 hover:text-gold sm:flex">Voir tous les matchs <ArrowRight size={16} /></Link>
         </div>
-        <Reveal>
-          <ul className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {list.map((m) => { const a = getPlayer(m.a)!, b = getPlayer(m.b)!; return (
-              <li key={m.game}>
-                <Link href="/evenements/tbl-02-the-throne" className="group block overflow-hidden rounded-2xl border border-line bg-neutral-950 transition hover:border-gold/60">
-                  <div className="relative aspect-[4/5]"><Image src={m.poster} alt={m.posterAlt} fill sizes="(min-width:1024px) 25vw, 50vw" className="object-cover transition duration-500 group-hover:scale-105" /></div>
-                  <div className="p-3 lg:p-4">
-                    <p className="text-[10px] font-semibold uppercase tracking-widest text-gold lg:text-[11px]">Game {m.game} · {m.label}</p>
-                    <p className="title mt-1 text-base lg:text-xl">{a.name} <span className="text-gold">vs</span> {b.name}</p>
-                    <div className="mt-1 hidden text-white/60 lg:block"><RecordLine p={a} /></div>
-                  </div>
-                </Link>
-              </li>); })}
-          </ul>
-        </Reveal>
-        <Link href="/evenements/tbl-02-the-throne" className="btn btn-ghost mt-6 w-full sm:hidden">Voir les 8 matchs</Link>
+        <Reveal><MatchCarousel items={items} /></Reveal>
+        <Link href="/evenements/tbl-02-the-throne" className="btn btn-ghost mt-8 w-full sm:hidden">Voir tous les matchs</Link>
       </div>
     </section>
   );
@@ -158,7 +150,7 @@ export async function WatchSection() {
   const { videoOverrides } = await getSiteData();
   const vids = (await getLatestVideos(30)).filter((v) => !videoOverrides[v.id]?.hidden).map((v) => ({ ...v, kind: kindOf(v.title, videoOverrides[v.id]?.kind) }));
   return (
-    <section className="border-t border-line bg-neutral-950 py-12 lg:py-16">
+    <section className="bg-gradient-to-b from-ink via-neutral-950 to-ink py-12 lg:py-20">
       <div className="mx-auto max-w-page px-4 lg:px-6">
         <p className="title text-sm tracking-[0.3em] text-[#ff4d4d]">YouTube</p>
         <h2 className="title mt-2 text-4xl lg:text-6xl">Regardez nos vidéos YouTube</h2>

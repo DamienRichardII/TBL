@@ -23,3 +23,5 @@ body { background: var(--ink); color: #fff; font-family: var(--font-sans), syste
 @keyframes page-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 .page-in { animation: page-in .45s ease-out both; }
 @media (prefers-reduced-motion: reduce) { .page-in { animation: none; } }
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
