@@ -74,9 +74,10 @@ export function Hero() {
           </div>
         </div>
       </div>
-      <div className="relative mx-4 mb-0 h-[min(125vw,560px)] overflow-hidden rounded-2xl lg:hidden">
-        <Image src="/img/hero-bg.webp" alt="Samuel, joueur TBL" fill priority sizes="100vw" className="object-cover object-[50%_30%] saturate-[1.2]" />
+      <div className="relative mx-4 mb-8 h-[min(100vw,440px)] overflow-hidden rounded-2xl lg:hidden">
+        <Image src="/img/hero-bg.webp" alt="Samuel, joueur TBL" fill priority sizes="100vw" className="object-cover object-[50%_28%] saturate-[1.2]" />
         <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-ink to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-ink to-transparent" />
       </div>
     </section>
   );
@@ -88,12 +89,12 @@ export function NextEvent() {
     <section className="relative isolate overflow-hidden bg-ink">
       <div className="mx-auto grid max-w-[1600px] grid-cols-2 lg:grid-cols-[1fr_minmax(0,1.15fr)_1fr]">
         <div className="relative aspect-[4/5] overflow-hidden lg:order-1 lg:aspect-auto lg:min-h-[560px]">
-          <div className={`${side} left-0`}><Image src={IMG.posters.samuelKeran} alt="Keran — TBL 02" fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover object-[50%_9%]" /></div>
+          <div className={`${side} left-0`}><Image src={IMG.posters.samuelKeran} alt="Keran — TBL 02" fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover object-[50%_0%] lg:object-[50%_9%]" /></div>
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-ink max-lg:hidden" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent lg:hidden" />
         </div>
         <div className="relative aspect-[4/5] overflow-hidden lg:order-3 lg:aspect-auto lg:min-h-[560px]">
-          <div className={`${side} right-0`}><Image src={IMG.posters.samuelKeran} alt="Samuel — TBL 02" fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover object-[50%_9%]" /></div>
+          <div className={`${side} right-0`}><Image src={IMG.posters.samuelKeran} alt="Samuel — TBL 02" fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover object-[50%_0%] lg:object-[50%_9%]" /></div>
           <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-ink max-lg:hidden" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent lg:hidden" />
         </div>
