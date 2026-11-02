@@ -140,7 +140,7 @@ export async function FeaturedMatches() {
 
 export async function WatchSection() {
   const { videoOverrides } = await getSiteData();
-  const vids = (await getLatestVideos(30)).filter((v) => !videoOverrides[v.id]?.hidden).map((v) => ({ ...v, kind: kindOf(v.title, videoOverrides[v.id]?.kind) }));
+  const vids = (await getLatestVideos(50)).filter((v) => !v.short && !videoOverrides[v.id]?.hidden).map((v) => ({ ...v, kind: kindOf(v.title, videoOverrides[v.id]?.kind) }));
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-ink via-neutral-950 to-ink py-14 lg:py-24">
       <div className="mx-auto max-w-page px-4 lg:px-6">

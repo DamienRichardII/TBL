@@ -12,7 +12,7 @@ export interface SiteData {
   players: Player[];
   matches: Match[];
   events: TblEvent[];
-  rankings: Record<Division, RankEntry[]>;
+  rankings: RankEntry[];
   videoOverrides: Record<string, VideoOverride>;
 }
 
@@ -73,13 +73,12 @@ export const getSiteData = cache(async (): Promise<SiteData> => {
   };
   // La base fait foi dès qu'elle contient des joueurs ; sinon on garde les données du code.
   if (!p || p.length === 0) return base;
-  const rankings: Record<Division, RankEntry[]> = { Lightweight: [], Middleweight: [], Heavyweight: [] };
-  for (const x of r ?? []) rankings[x.division].push({ slug: x.player_slug, wins: x.wins, losses: x.losses, ...(x.champion ? { champion: true } : {}) });
+  const rankings: RankEntry[] = (r ?? []).map((x) => ({ slug: x.player_slug, wins: x.wins, losses: x.losses, ...(x.champion ? { champion: true } : {}) }));
   return {
     ...base,
     players: p.map(toPlayer),
     matches: m && m.length ? m.map(toMatch) : staticMatches,
     events: e && e.length ? e.map(toEvent) : staticEvents,
-    rankings: r ? rankings : staticRankings,
+    rankings: rankings.length ? rankings : staticRankings,
   };
 });

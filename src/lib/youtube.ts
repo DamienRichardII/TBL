@@ -1,6 +1,6 @@
 import { YOUTUBE_CHANNEL_ID } from "@/data/site";
 
-export interface YtVideo { id: string; title: string; published: string }
+export interface YtVideo { id: string; title: string; published: string; short?: boolean }
 
 /** Parse le flux RSS public d'une chaîne YouTube. */
 export function parseFeed(xml: string): YtVideo[] {
@@ -11,7 +11,8 @@ export function parseFeed(xml: string): YtVideo[] {
     const published = e.match(/<published>([^<]+)<\/published>/)?.[1] ?? "";
     if (!id || !title) return [];
     const clean = title.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-    return [{ id, title: clean, published }];
+    const short = /<link[^>]+href="https:\/\/www\.youtube\.com\/shorts\//.test(e);
+    return [{ id, title: clean, published, short }];
   });
 }
 

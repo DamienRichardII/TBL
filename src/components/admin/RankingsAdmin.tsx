@@ -3,23 +3,21 @@ import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { Msg, input, numOrNull } from "./ui";
 
-const DIVS = ["Lightweight", "Middleweight", "Heavyweight"] as const;
 interface P { slug: string; name: string; division: string }
 interface Line { player_slug: string; wins: number; losses: number; champion: boolean }
 
 export function RankingsAdmin() {
-  const [div, setDiv] = useState<(typeof DIVS)[number]>("Lightweight");
   const [players, setPlayers] = useState<P[]>([]);
   const [lines, setLines] = useState<Line[]>([]);
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
 
   const load = useCallback(async () => {
     const sb = supabase();
-    const [p, r] = await Promise.all([sb.from("players").select("slug,name,division").order("name"), sb.from("rankings").select("*").eq("division", div).order("position")]);
+    const [p, r] = await Promise.all([sb.from("players").select("slug,name,division").order("name"), sb.from("rankings").select("*").order("position")]);
     setPlayers((p.data as P[]) ?? []);
     setLines(((r.data as Line[]) ?? []).map((x) => ({ player_slug: x.player_slug, wins: x.wins, losses: x.losses, champion: x.champion })));
     setMsg(null);
-  }, [div]);
+  }, []);
   useEffect(() => { load(); }, [load]);
 
   const upd = (i: number, patch: Partial<Line>) => setLines((l) => l.map((x, j) => (j === i ? { ...x, ...patch } : x)));
@@ -30,24 +28,24 @@ export function RankingsAdmin() {
     if (slugs.some((s) => !s) || new Set(slugs).size !== slugs.length) { setMsg({ ok: false, text: "Chaque ligne doit avoir un joueur différent." }); return; }
     const sb = supabase();
     if (lines.length) {
-      const { error } = await sb.from("rankings").upsert(lines.map((l, i) => ({ division: div, position: i + 1, ...l })), { onConflict: "division,player_slug" });
+      const { error } = await sb.from("rankings").upsert(lines.map((l, i) => ({ division: players.find((p) => p.slug === l.player_slug)?.division ?? "Lightweight", position: i + 1, ...l })), { onConflict: "division,player_slug" });
       if (error) { setMsg({ ok: false, text: `Erreur : ${error.message}` }); return; }
+      for (const l of lines) await sb.from("players").update({ wins: l.wins, losses: l.losses }).eq("slug", l.player_slug);
     }
-    let del = sb.from("rankings").delete().eq("division", div);
-    if (slugs.length) del = del.not("player_slug", "in", `(${slugs.map((s) => `"${s}"`).join(",")})`);
+    let del = sb.from("rankings").delete().not("player_slug", "is", null);
+    if (slugs.length) del = sb.from("rankings").delete().not("player_slug", "in", `(${slugs.map((s) => `"${s}"`).join(",")})`);
     const { error } = await del;
     setMsg(error ? { ok: false, text: `Erreur : ${error.message}` } : { ok: true, text: "Classement enregistré." });
   }
 
   return (
     <div>
-      <div role="tablist" className="mb-6 flex gap-2">{DIVS.map((d) => <button key={d} role="tab" aria-selected={div === d} onClick={() => setDiv(d)} className={`chip ${div === d ? "border-white bg-white text-ink" : "border-white/25 text-white/75"}`}>{d}</button>)}</div>
-      <p className="mb-4 max-w-2xl text-[13px] text-white/60">Le premier de la liste est n°1. Un classement vide affiche « pas encore communiqué » sur le site. Ne publie que des résultats validés par TBL.</p>
+      <p className="mb-4 max-w-2xl text-[13px] text-white/60">Classement général : le premier de la liste est n°1 (↑ ↓ pour changer l’ordre). Les victoires/défaites sont aussi reportées sur la fiche du joueur. Ne publie que des résultats validés par l’équipe TBL.</p>
       <ol className="space-y-2">
         {lines.map((l, i) => (
           <li key={i} className="flex flex-wrap items-center gap-2 rounded-xl border border-line p-3">
             <span className="title w-8 text-center text-xl text-gold">{i + 1}</span>
-            <select className={`${input} !w-auto min-w-[10rem] flex-1`} value={l.player_slug} onChange={(e) => upd(i, { player_slug: e.target.value })}><option value="">Joueur…</option>{players.filter((p) => p.division === div).map((p) => <option key={p.slug} value={p.slug}>{p.name}</option>)}</select>
+            <select className={`${input} !w-auto min-w-[10rem] flex-1`} value={l.player_slug} onChange={(e) => upd(i, { player_slug: e.target.value })}><option value="">Joueur…</option>{players.map((p) => <option key={p.slug} value={p.slug}>{p.name}</option>)}</select>
             <input aria-label="Victoires" className={`${input} !w-16`} inputMode="numeric" value={l.wins} onChange={(e) => upd(i, { wins: numOrNull(e.target.value) ?? 0 })} />
             <span className="text-white/50">V</span>
             <input aria-label="Défaites" className={`${input} !w-16`} inputMode="numeric" value={l.losses} onChange={(e) => upd(i, { losses: numOrNull(e.target.value) ?? 0 })} />
