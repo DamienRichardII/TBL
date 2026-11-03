@@ -73,7 +73,7 @@ export function RankingList() {
           ))}
         </ol>
       </div>
-      <p className="mt-5 max-w-3xl text-[12px] leading-relaxed text-white/50">Les rangs 1 à 5 sont fixés ; à partir du rang 6, l’ordre est provisoire. Seuls les matchs officiels TBL sont comptabilisés, pas ceux d’autres compétitions.</p>
+      <p className="mt-5 max-w-3xl text-[12px] leading-relaxed text-white/50">Classement établi sur le ratio victoires / défaites. Seuls les matchs officiels TBL sont comptabilisés, pas ceux d’autres compétitions.</p>
     </div>
   );
 }
