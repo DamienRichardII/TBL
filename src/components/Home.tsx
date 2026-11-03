@@ -143,8 +143,6 @@ export async function WatchSection() {
   const vids = (await getLatestVideos(50)).filter((v) => !v.short && !videoOverrides[v.id]?.hidden).map((v) => ({ ...v, kind: kindOf(v.title, videoOverrides[v.id]?.kind) }));
   return (
     <section className="relative isolate overflow-hidden bg-gradient-to-b from-ink via-neutral-950 to-ink py-14 lg:py-24">
-      <Image src="/img/yt-left.webp" alt="" width={510} height={700} aria-hidden className="pointer-events-none absolute -left-10 bottom-0 -z-10 hidden h-[78%] w-auto opacity-30 [mask-image:linear-gradient(to_bottom,black_55%,transparent)] lg:block xl:left-0" />
-      <Image src="/img/yt-right.webp" alt="" width={279} height={725} aria-hidden className="pointer-events-none absolute -right-4 bottom-0 -z-10 hidden h-[88%] w-auto opacity-30 [mask-image:linear-gradient(to_bottom,black_50%,transparent)] lg:block xl:right-6" />
       <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[70%] w-auto -translate-x-1/2 -translate-y-1/2 opacity-[.045] grayscale" />
       <div className="mx-auto max-w-page px-4 lg:px-6">
         <p className="title text-sm tracking-[0.3em] text-[#ff4d4d]">YouTube</p>
