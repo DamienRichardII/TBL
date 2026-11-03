@@ -142,7 +142,10 @@ export async function WatchSection() {
   const { videoOverrides } = await getSiteData();
   const vids = (await getLatestVideos(50)).filter((v) => !v.short && !videoOverrides[v.id]?.hidden).map((v) => ({ ...v, kind: kindOf(v.title, videoOverrides[v.id]?.kind) }));
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-ink via-neutral-950 to-ink py-14 lg:py-24">
+    <section className="relative isolate overflow-hidden bg-gradient-to-b from-ink via-neutral-950 to-ink py-14 lg:py-24">
+      <Image src="/img/yt-left.webp" alt="" width={510} height={700} aria-hidden className="pointer-events-none absolute -left-10 bottom-0 -z-10 hidden h-[78%] w-auto opacity-30 [mask-image:linear-gradient(to_bottom,black_55%,transparent)] lg:block xl:left-0" />
+      <Image src="/img/yt-right.webp" alt="" width={279} height={725} aria-hidden className="pointer-events-none absolute -right-4 bottom-0 -z-10 hidden h-[88%] w-auto opacity-30 [mask-image:linear-gradient(to_bottom,black_50%,transparent)] lg:block xl:right-6" />
+      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[70%] w-auto -translate-x-1/2 -translate-y-1/2 opacity-[.045] grayscale" />
       <div className="mx-auto max-w-page px-4 lg:px-6">
         <p className="title text-sm tracking-[0.3em] text-[#ff4d4d]">YouTube</p>
         <h2 className="title mt-2 text-4xl lg:text-6xl">Regardez nos vidéos YouTube</h2>
@@ -172,8 +175,8 @@ export function Divisions() {
           <ul className="mx-auto mt-10 grid max-w-4xl gap-8 sm:grid-cols-3 lg:gap-10">
             {divisions.map((d) => { const b = belt(d.slug); return (
               <li key={d.slug} className="flex flex-col items-center">
-                <div className="relative flex h-40 w-full items-center justify-center">
-                  {b ? <Image src={b} alt={`Ceinture ${d.name}`} fill sizes="280px" className="object-contain drop-shadow-[0_10px_30px_rgba(201,161,92,.35)]" />
+                <div className="relative flex h-44 w-full items-center justify-center lg:h-52">
+                  {b ? <Image src={b} alt={`Ceinture ${d.name}`} width={d.slug === "middleweight" ? 470 : 400} height={d.slug === "middleweight" ? 258 : 234} sizes="(min-width:1024px) 320px, 80vw" className="h-auto w-full max-w-[300px] lg:w-[118%] lg:max-w-none [mask-image:radial-gradient(ellipse_closest-side,black_80%,transparent)]" />
                     : <div className="flex h-36 w-36 items-center justify-center rounded-full border border-gold/50 bg-[radial-gradient(closest-side,rgba(201,161,92,.25),transparent)] shadow-[0_0_60px_-10px_rgba(201,161,92,.6)]"><Logo height={84} /></div>}
                 </div>
                 <h3 className="title gold-text mt-4 text-3xl lg:text-4xl">{d.name}</h3>

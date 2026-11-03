@@ -54,7 +54,7 @@ const toMatch = (r: MatchRow): Match => ({
 });
 const toEvent = (r: EventRow): TblEvent => ({
   slug: r.slug, name: r.name, status: r.status, dateLabel: r.date_label, image: r.image, href: `/evenements/${r.slug}`,
-  tags: r.status === "Passé" ? ["1vs1", "Passés"] : ["1vs1"],
+  tags: r.status === "Passé" ? ["1vs1", "TBL événements", "Passés"] : ["1vs1", "TBL événements"],
   ...(r.subtitle ? { subtitle: r.subtitle } : {}), ...(r.time ? { time: r.time } : {}), ...(r.city ? { city: r.city } : {}),
   ...(r.venue ? { venue: r.venue } : {}), ...(r.access ? { access: r.access } : {}),
 });

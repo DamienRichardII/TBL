@@ -6,7 +6,7 @@ import { Calendar, MapPin } from "lucide-react";
 import { useSiteData } from "./SiteDataProvider";
 import { RESERVATION_HREF, TICKETING_URL } from "@/data/site";
 
-const filters = ["Tous", "1vs1", "Tournois", "Show", "Passés"] as const;
+const filters = ["Tous", "1vs1", "TBL événements", "Show", "Passés"] as const;
 
 export function EventCatalog() {
   const { events } = useSiteData();

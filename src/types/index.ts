@@ -12,7 +12,7 @@ export interface Player {
   champion?: boolean;
   /** Bilan TBL confirmé uniquement (jamais de 0-0 par défaut) */
   tblRecord?: { wins: number; losses: number };
-  /** Bilan hors TBL (TapeUp, TopHoops…) : affiché à part, jamais dans le classement TBL */
+  /** Bilan hors TBL (Top Hoops…) : affiché à part, jamais dans le classement TBL */
   otherRecord?: { source: string; wins: number; losses: number };
   /** IDs YouTube de ses performances */
   videos?: string[];
@@ -37,7 +37,7 @@ export interface TblEvent {
   slug: string;
   name: string;
   subtitle?: string;
-  tags: ("1vs1" | "Tournois" | "Show" | "Passés")[];
+  tags: ("1vs1" | "TBL événements" | "Show" | "Passés")[];
   status: "À venir" | "Passé";
   dateLabel: string;
   time?: string;

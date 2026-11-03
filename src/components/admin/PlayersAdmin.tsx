@@ -62,7 +62,7 @@ export function PlayersAdmin() {
             <Field label="Division"><select className={input} value={cur.division} onChange={(e) => set("division", e.target.value)}><option>Lightweight</option><option>Middleweight</option><option>Heavyweight</option></select></Field>
             <Field label="Victoires TBL (vide = à confirmer)"><input className={input} inputMode="numeric" value={cur.wins ?? ""} onChange={(e) => set("wins", numOrNull(e.target.value))} /></Field>
             <Field label="Défaites TBL (vide = à confirmer)"><input className={input} inputMode="numeric" value={cur.losses ?? ""} onChange={(e) => set("losses", numOrNull(e.target.value))} /></Field>
-            <Field label="Bilan hors TBL : source (ex. TapeUp)"><input className={input} value={cur.other_source ?? ""} onChange={(e) => set("other_source", txt(e.target.value))} /></Field>
+            <Field label="Bilan hors TBL : source (ex. Top Hoops)"><input className={input} value={cur.other_source ?? ""} onChange={(e) => set("other_source", txt(e.target.value))} /></Field>
             <Field label="Hors TBL : victoires"><input className={input} inputMode="numeric" value={cur.other_wins ?? ""} onChange={(e) => set("other_wins", numOrNull(e.target.value))} /></Field>
             <Field label="Hors TBL : défaites"><input className={input} inputMode="numeric" value={cur.other_losses ?? ""} onChange={(e) => set("other_losses", numOrNull(e.target.value))} /></Field>
           </div>
