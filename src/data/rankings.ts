@@ -1,15 +1,14 @@
 import type { RankEntry } from "@/types";
 /**
- * Classement général TBL — Saison 2026, dans l'ordre (1er en premier).
- * Tri par ratio victoires / (victoires + défaites) décroissant ; égalité : plus de victoires, puis ordre du PDF TBL d'octobre 2026.
- * Joueurs sans match (0 V / 0 D) : placés entre les ratios positifs et les joueurs à 0 victoire.
+ * Classement général TBL — Saison 2026, dans l'ordre (1er en premier), validé par TBL :
+ * 1 Samuel (champion), 2 Keran, 3 Kenny, 4 Adama, 5 Leïan, puis le reste du classement.
  * Résultats TBL uniquement (jamais Top Hoops). Toute modification est à valider par l'équipe TBL.
  */
 export const rankings: RankEntry[] = [
-  { slug: "kieran", wins: 1, losses: 0 },
-  { slug: "adama", wins: 1, losses: 0 },
   { slug: "samuel-marwakal", wins: 3, losses: 1 },
+  { slug: "kieran", wins: 1, losses: 0 },
   { slug: "kenny-brown", wins: 1, losses: 1 },
+  { slug: "adama", wins: 1, losses: 0 },
   { slug: "leian", wins: 1, losses: 1 },
   { slug: "bryan-pamba", wins: 0, losses: 0 },
   { slug: "yanis", wins: 0, losses: 0 },

@@ -73,7 +73,7 @@ export function RankingList() {
           ))}
         </ol>
       </div>
-      <p className="mt-5 max-w-3xl text-[12px] leading-relaxed text-white/50">Classement établi sur le ratio victoires / défaites. Seuls les matchs officiels TBL sont comptabilisés, pas ceux d’autres compétitions.</p>
+      <p className="mt-5 max-w-3xl text-[12px] leading-relaxed text-white/50">Seuls les matchs officiels TBL sont comptabilisés, pas ceux d’autres compétitions.</p>
     </div>
   );
 }
