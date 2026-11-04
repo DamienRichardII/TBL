@@ -87,8 +87,8 @@ export function NextEvent() {
   const side = "absolute top-0 h-full w-[200%] max-w-none";
   return (
     <section className="relative isolate overflow-hidden bg-ink">
-      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute left-[2.5%] top-6 z-[5] hidden h-[150px] w-auto opacity-[.3] grayscale lg:block" />
-      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute right-[2.5%] top-6 z-[5] hidden h-[150px] w-auto opacity-[.3] grayscale lg:block" />
+      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute top-1/2 -left-[4%] z-[5] hidden h-[48%] w-auto -translate-y-1/2 opacity-[.18] grayscale lg:block" />
+      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute top-1/2 -right-[4%] z-[5] hidden h-[48%] w-auto -translate-y-1/2 opacity-[.18] grayscale lg:block" />
       <div className="mx-auto grid max-w-[1600px] grid-cols-2 lg:grid-cols-[1fr_minmax(0,1.15fr)_1fr]">
         <div className="relative aspect-[4/5] overflow-hidden lg:order-1 lg:aspect-auto lg:min-h-[560px]">
           <div className={`${side} left-0`}><Image src={IMG.posters.samuelKeran} alt="Keran — TBL 02" fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover object-[50%_0%] lg:object-[50%_9%]" /></div>
