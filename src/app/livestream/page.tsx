@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "Livestream", description: "Suivez le
 
 export default function Page() {
   return (
-    <PageShell>
+    <PageShell backdrop="livestream">
       <PageTitle sub="Suivez les événements TBL en direct sur YouTube.">Livestream</PageTitle>
       <section aria-labelledby="live" className="relative mt-14 overflow-hidden rounded-2xl border border-gold/30 bg-neutral-950 p-6 lg:p-12">
         <div className="gold-glow absolute inset-0 opacity-50" />

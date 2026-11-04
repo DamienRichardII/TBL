@@ -53,3 +53,5 @@ update public.players set wins=0, losses=1, photo='/img/players/aurelien.webp' w
 update public.players set wins=1, losses=0, other_source=null, other_wins=null, other_losses=null, photo='/img/players/sebastien.webp' where slug='sebastien';
 delete from public.rankings;
 insert into public.rankings (division,player_slug,position,wins,losses,champion) values ('Middleweight','samuel-marwakal',1,3,1,true),('Middleweight','kieran',2,1,0,false),('Middleweight','kenny-brown',3,1,1,false),('Lightweight','adama',4,1,0,false),('Lightweight','sebastien',5,1,0,false),('Lightweight','leian',6,1,1,false),('Middleweight','bryan-pamba',7,0,0,false),('Lightweight','yanis',8,0,0,false),('Lightweight','curtis',9,0,0,false),('Lightweight','imran',10,0,0,false),('Heavyweight','desmo',11,0,0,false),('Middleweight','dani',12,0,0,false),('Middleweight','matthias',13,0,0,false),('Heavyweight','tiegbe-bamba',14,0,1,false),('Heavyweight','chris',15,0,1,false),('Heavyweight','aurelien',16,0,1,false);
+
+insert into public.admin_users (email) values ('theballinleague1v1@gmail.com') on conflict do nothing;

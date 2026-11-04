@@ -12,7 +12,7 @@ export default async function Page() {
   const { videoOverrides } = await getSiteData();
   const vids = (await getLatestVideos(30)).filter((v) => !videoOverrides[v.id]?.hidden).map((v) => ({ ...v, kind: kindOf(v.title, videoOverrides[v.id]?.kind) }));
   return (
-    <PageShell>
+    <PageShell backdrop="videos">
       <PageTitle sub="Matchs complets, highlights et teasers : tout est sur la chaîne YouTube de TBL.">Vidéos</PageTitle>
       <YouTubeCTA compact className="mb-10 sm:justify-start" />
       <VideoGrid videos={vids} filters />
