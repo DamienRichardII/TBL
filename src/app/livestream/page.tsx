@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageShell, PageTitle } from "@/components/PageHero";
 import { YouTubeCTA } from "@/components/YouTubeCTA";
 import { LIVE_VIDEO_ID } from "@/data/site";
-export const metadata: Metadata = { title: "Livestream" };
+export const metadata: Metadata = { title: "Livestream", description: "Suivez les événements The Ballin League en direct : livestream des matchs de basketball 1v1." };
 
 export default function Page() {
   return (

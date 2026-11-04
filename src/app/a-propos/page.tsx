@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageShell, PageTitle } from "@/components/PageHero";
 import { Notice } from "@/components/DemoNotice";
 import { divisions } from "@/data/site";
-export const metadata: Metadata = { title: "À propos" };
+export const metadata: Metadata = { title: "À propos", description: "Découvrez The Ballin League : une ligue française de basketball 1v1 organisée en trois divisions, Lightweight, Middleweight et Heavyweight." };
 
 const Block = ({ t, children }: { t: string; children: React.ReactNode }) => (
   <section className="border-t border-line py-8 lg:grid lg:grid-cols-[260px_1fr] lg:gap-10"><h2 className="title mb-3 text-2xl text-gold">{t}</h2><div className="max-w-3xl space-y-4 text-[15px] leading-relaxed text-white/80">{children}</div></section>

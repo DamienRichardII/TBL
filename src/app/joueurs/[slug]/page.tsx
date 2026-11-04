@@ -13,7 +13,9 @@ export async function generateStaticParams() { return (await getSiteData()).play
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { players } = await getSiteData();
   const slug = (await params).slug;
-  const p = players.find((x) => x.slug === slug); return { title: p ? p.name : "Joueur" };
+  const p = players.find((x) => x.slug === slug); if (!p) return { title: "Joueur" };
+  const rec = p.tblRecord ? ` Bilan TBL : ${p.tblRecord.wins} victoire${p.tblRecord.wins > 1 ? "s" : ""}, ${p.tblRecord.losses} défaite${p.tblRecord.losses > 1 ? "s" : ""}.` : "";
+  return { title: p.name, description: `${p.name}${p.nickname ? ` « ${p.nickname} »` : ""}, joueur ${p.division} de The Ballin League.${rec}` };
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {

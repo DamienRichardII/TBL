@@ -4,7 +4,7 @@ import Link from "next/link";
 import { PageShell, PageTitle } from "@/components/PageHero";
 import { Notice } from "@/components/DemoNotice";
 import { IMG } from "@/lib/assets";
-export const metadata: Metadata = { title: "TBL 01" };
+export const metadata: Metadata = { title: "TBL 01", description: "TBL 01, première édition de The Ballin League : revivez le premier événement de basketball 1v1 en photos." };
 export default function Page() {
   return (
     <PageShell>

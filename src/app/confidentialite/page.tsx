@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageShell, PageTitle } from "@/components/PageHero";
 import { Notice } from "@/components/DemoNotice";
-export const metadata: Metadata = { title: "Politique de confidentialité" };
+export const metadata: Metadata = { title: "Politique de confidentialité", description: "Politique de confidentialité de The Ballin League : données collectées, finalités et droits des utilisateurs." };
 export default function Page() {
   return (
     <PageShell>

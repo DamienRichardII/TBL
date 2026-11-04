@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageShell, PageTitle } from "@/components/PageHero";
 import { Notice } from "@/components/DemoNotice";
-export const metadata: Metadata = { title: "Mentions légales" };
+export const metadata: Metadata = { title: "Mentions légales", description: "Mentions légales du site The Ballin League : éditeur, hébergeur et propriété intellectuelle." };
 export default function Page() {
   return (
     <PageShell>

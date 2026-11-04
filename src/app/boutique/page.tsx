@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ShoppingBag } from "lucide-react";
 import { PageShell, PageTitle } from "@/components/PageHero";
-export const metadata: Metadata = { title: "Boutique" };
+export const metadata: Metadata = { title: "Boutique", description: "La boutique officielle The Ballin League : merchandising et collections TBL." };
 const cats = ["Maillots officiels", "T-shirts", "Sweats", "Accessoires"];
 export default function Page() {
   return (

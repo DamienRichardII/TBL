@@ -10,11 +10,12 @@ const display = Oswald({ subsets: ["latin"], variable: "--font-display", weight:
 const sans = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
-  ?? (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000");
+  ?? (process.env.NODE_ENV === "production" ? "https://www.theballinleague.fr" : "http://localhost:3000");
 const description = "The Ballin League (TBL) : organisation française de basketball 1v1. Événements, joueurs, classements par division.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  alternates: { canonical: "./" },
   openGraph: { type: "website", siteName: "TBL — The Ballin League", locale: "fr_FR", title: "TBL — The Ballin League | Basketball 1v1", description },
   twitter: { card: "summary_large_image", title: "TBL — The Ballin League | Basketball 1v1", description },
   title: { default: "TBL — The Ballin League | Basketball 1v1", template: "%s | TBL — The Ballin League" },

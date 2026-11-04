@@ -5,7 +5,7 @@ import { VideoGrid } from "@/components/VideoGrid";
 import { YouTubeCTA } from "@/components/YouTubeCTA";
 import { getLatestVideos, kindOf } from "@/lib/youtube";
 import { getSiteData } from "@/lib/db";
-export const metadata: Metadata = { title: "Vidéos" };
+export const metadata: Metadata = { title: "Vidéos", description: "Les dernières vidéos de The Ballin League : matchs, highlights et coulisses du basketball 1v1 en France." };
 export const revalidate = 60;
 
 export default async function Page() {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/PageHero";
 import { RankingList } from "@/components/RankingList";
-export const metadata: Metadata = { title: "Classement officiel TBL — Saison 2026" };
+export const metadata: Metadata = { title: "Classement officiel TBL — Saison 2026", description: "Classement officiel The Ballin League, saison 2026 : podium, bilan victoires-défaites et position de chaque joueur." };
 export default function Page() {
   return (
     <PageShell>
