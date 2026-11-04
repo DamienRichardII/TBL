@@ -15,7 +15,7 @@ export const players: Player[] = [
   { slug: "matthias", photo: "/img/players/matthias.webp", name: "Matthias", nickname: "MD", number: 45, height: "1,92 m", division: "Middleweight", tblRecord: { wins: 0, losses: 0 } },
   { slug: "desmo", photo: "/img/players/desmo.webp", name: "Desmo", nickname: "Desmo_93", number: 93, height: "1,93 m", division: "Heavyweight", tblRecord: { wins: 0, losses: 0 }, otherRecord: { source: "Top Hoops", wins: 2, losses: 1 } },
   { slug: "chris", photo: "/img/players/chris.webp", name: "Chris", nickname: "Chrisgotbounce", number: 13, height: "1,93 m", division: "Heavyweight", tblRecord: { wins: 0, losses: 1 } },
-  { slug: "sebastien", photo: "/img/players/sebastien.webp", name: "Sébastien", nickname: "Roda", number: 0, height: "1,80 m", division: "Lightweight", tblRecord: { wins: 0, losses: 1 }, otherRecord: { source: "Top Hoops", wins: 1, losses: 0 }, note: "Match de qualification (tryout)." },
+  { slug: "sebastien", photo: "/img/players/sebastien.webp", name: "Sébastien", nickname: "Roda", number: 0, height: "1,80 m", division: "Lightweight", tblRecord: { wins: 1, losses: 0 }, note: "Match de qualification (tryout)." },
   { slug: "imran", photo: "/img/players/imran.webp", name: "Imran", nickname: "IMS", number: 3, height: "1,80 m", division: "Lightweight", tblRecord: { wins: 0, losses: 0 }, note: "Match de qualification (tryout)." },
 ];
 

@@ -10,6 +10,7 @@ export const rankings: RankEntry[] = [
   { slug: "kenny-brown", wins: 1, losses: 1 },
   { slug: "adama", wins: 1, losses: 0 },
   { slug: "leian", wins: 1, losses: 1 },
+  { slug: "sebastien", wins: 1, losses: 0 },
   { slug: "bryan-pamba", wins: 0, losses: 0 },
   { slug: "yanis", wins: 0, losses: 0 },
   { slug: "curtis", wins: 0, losses: 0 },
@@ -20,5 +21,4 @@ export const rankings: RankEntry[] = [
   { slug: "tiegbe-bamba", wins: 0, losses: 1 },
   { slug: "chris", wins: 0, losses: 1 },
   { slug: "aurelien", wins: 0, losses: 1 },
-  { slug: "sebastien", wins: 0, losses: 1 },
 ];
