@@ -35,13 +35,18 @@ const stats = [{ n: "8", t: "Matchs" }, { n: "16", t: "Joueurs" }, { n: "3", t: 
 
 export function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-ink pt-24 lg:flex lg:min-h-[min(100svh,920px)] lg:items-center lg:pt-[72px]">
+    <section className="relative isolate overflow-hidden bg-ink pt-24 pb-10 lg:flex lg:min-h-[min(100svh,920px)] lg:items-center lg:pb-0 lg:pt-[72px]">
       <div aria-hidden className="absolute inset-y-0 right-0 -z-10 hidden w-[74%] lg:block">
         <Image src="/img/hero-bg.webp" alt="" fill priority sizes="74vw" className="object-cover object-[50%_22%] saturate-[1.2] contrast-[1.05]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,#08090B_0%,rgba(8,9,11,.7)_14%,rgba(8,9,11,.2)_36%,transparent_55%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(60%_70%_at_75%_40%,rgba(201,161,92,.22),transparent)] mix-blend-screen" />
         <div className="absolute inset-x-0 bottom-0 h-1/6 bg-gradient-to-t from-ink to-transparent" />
         <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-ink/70 to-transparent" />
+      </div>
+      <div aria-hidden className="absolute inset-0 -z-10 lg:hidden">
+        <Image src="/img/hero-bg.webp" alt="" fill priority sizes="100vw" className="object-cover object-[46%_0%] saturate-[1.2]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,9,11,.45)_0%,rgba(8,9,11,.3)_30%,rgba(8,9,11,.7)_72%,#08090B_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,9,11,.35),transparent_55%)]" />
       </div>
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <Image src="/img/dust-left.webp" alt="" width={700} height={1100} className="absolute left-0 top-0 h-full w-auto max-w-[45vw] object-cover object-left opacity-80 [mask-image:linear-gradient(to_right,black_40%,transparent)]" />
@@ -73,11 +78,6 @@ export function Hero() {
             <Link href="/evenements/tbl-02-the-throne" className="btn btn-ghost !py-4 sm:flex-1"><CirclePlay size={18} />Découvrir TBL 02 <ArrowRight size={16} /></Link>
           </div>
         </div>
-      </div>
-      <div className="relative mx-4 mb-8 h-[min(100vw,440px)] overflow-hidden rounded-2xl lg:hidden">
-        <Image src="/img/hero-bg.webp" alt="Samuel, joueur TBL" fill priority sizes="100vw" className="object-cover object-[50%_28%] saturate-[1.2]" />
-        <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-ink to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-ink to-transparent" />
       </div>
     </section>
   );
