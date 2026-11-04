@@ -165,6 +165,7 @@ export function Divisions() {
     <section className="relative isolate overflow-hidden bg-ink py-16 lg:py-28">
       <Image src="/img/side-left.webp" alt="" width={700} height={819} aria-hidden className="pointer-events-none absolute -left-32 bottom-0 -z-10 hidden h-[82%] w-auto opacity-30 [mask-image:linear-gradient(to_right,black_35%,transparent)] xl:-left-16 lg:block" />
       <Image src="/img/side-right.webp" alt="" width={385} height={950} aria-hidden className="pointer-events-none absolute bottom-0 right-[2%] -z-10 hidden h-[88%] w-auto opacity-45 [mask-image:linear-gradient(to_bottom,black_55%,transparent)] xl:right-[5%] lg:block" />
+      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[85%] w-auto -translate-x-1/2 -translate-y-1/2 opacity-[.1] grayscale" />
       <div className="gold-glow pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-2/3 opacity-60" />
       <div className="mx-auto max-w-page px-4 text-center lg:px-6">
         <p className="title gold-text text-sm tracking-[0.3em]">Les titres TBL</p>
