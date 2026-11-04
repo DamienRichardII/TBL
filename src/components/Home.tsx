@@ -127,7 +127,9 @@ export async function FeaturedMatches() {
   const items = matches.filter((m) => nm(m.a) && nm(m.b)).sort((x, y) => y.game - x.game)
     .map((m) => ({ game: m.game, label: m.label, poster: m.poster, alt: m.posterAlt, a: nm(m.a)!, b: nm(m.b)!, main: m.game === 8 }));
   return (
-    <section className="relative bg-ink pb-16 pt-6 lg:pb-24">
+    <section className="relative isolate overflow-hidden bg-ink pb-16 pt-6 lg:pb-24">
+      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute top-1/2 -z-10 hidden h-[48%] w-auto -translate-y-1/2 opacity-[.12] grayscale lg:block -left-[4%]" />
+      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute top-1/2 -z-10 hidden h-[48%] w-auto -translate-y-1/2 opacity-[.12] grayscale lg:block -right-[4%]" />
       <div className="mx-auto max-w-page px-4 lg:px-6">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div><p className="title gold-text text-sm tracking-[0.3em]">TBL 02 — The Throne</p><h2 className="title mt-2 text-4xl lg:text-6xl">La carte des 8 matchs</h2></div>
