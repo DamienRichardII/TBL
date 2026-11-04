@@ -197,7 +197,7 @@ export function Divisions() {
 export function Banner() {
   return (
     <section className="relative isolate overflow-hidden py-24 text-center lg:py-40">
-      <Image src={IMG.banner} alt="" fill sizes="100vw" className="-z-10 object-cover object-[50%_22%] grayscale" />
+      <Image src={IMG.banner} alt="" fill sizes="100vw" className="-z-10 object-cover object-[50%_46%] grayscale" />
       <div className="absolute inset-0 -z-10 bg-ink/70" />
       <div className="gold-glow absolute inset-x-0 bottom-0 -z-10 h-full" />
       <Reveal>
