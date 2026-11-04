@@ -87,6 +87,8 @@ export function NextEvent() {
   const side = "absolute top-0 h-full w-[200%] max-w-none";
   return (
     <section className="relative isolate overflow-hidden bg-ink">
+      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute left-[2.5%] top-6 z-[5] hidden h-[150px] w-auto opacity-[.3] grayscale lg:block" />
+      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute right-[2.5%] top-6 z-[5] hidden h-[150px] w-auto opacity-[.3] grayscale lg:block" />
       <div className="mx-auto grid max-w-[1600px] grid-cols-2 lg:grid-cols-[1fr_minmax(0,1.15fr)_1fr]">
         <div className="relative aspect-[4/5] overflow-hidden lg:order-1 lg:aspect-auto lg:min-h-[560px]">
           <div className={`${side} left-0`}><Image src={IMG.posters.samuelKeran} alt="Keran — TBL 02" fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover object-[50%_0%] lg:object-[50%_9%]" /></div>
@@ -143,7 +145,8 @@ export async function WatchSection() {
   const vids = (await getLatestVideos(50)).filter((v) => !v.short && !videoOverrides[v.id]?.hidden).map((v) => ({ ...v, kind: kindOf(v.title, videoOverrides[v.id]?.kind) }));
   return (
     <section className="relative isolate overflow-hidden bg-gradient-to-b from-ink via-neutral-950 to-ink py-14 lg:py-24">
-      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[70%] w-auto -translate-x-1/2 -translate-y-1/2 opacity-[.045] grayscale" />
+      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute top-1/2 -left-[4%] -z-10 hidden h-[48%] w-auto -translate-y-1/2 opacity-[.12] grayscale lg:block" />
+      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute top-1/2 -right-[4%] -z-10 hidden h-[48%] w-auto -translate-y-1/2 opacity-[.12] grayscale lg:block" />
       <div className="mx-auto max-w-page px-4 lg:px-6">
         <p className="title text-sm tracking-[0.3em] text-[#ff4d4d]">YouTube</p>
         <h2 className="title mt-2 text-4xl lg:text-6xl">Regardez nos vidéos YouTube</h2>
@@ -165,7 +168,6 @@ export function Divisions() {
     <section className="relative isolate overflow-hidden bg-ink py-16 lg:py-28">
       <Image src="/img/side-left.webp" alt="" width={700} height={819} aria-hidden className="pointer-events-none absolute -left-32 bottom-0 -z-10 hidden h-[82%] w-auto opacity-30 [mask-image:linear-gradient(to_right,black_35%,transparent)] xl:-left-16 lg:block" />
       <Image src="/img/side-right.webp" alt="" width={385} height={950} aria-hidden className="pointer-events-none absolute bottom-0 right-[2%] -z-10 hidden h-[88%] w-auto opacity-45 [mask-image:linear-gradient(to_bottom,black_55%,transparent)] xl:right-[5%] lg:block" />
-      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[85%] w-auto -translate-x-1/2 -translate-y-1/2 opacity-[.1] grayscale" />
       <div className="gold-glow pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-2/3 opacity-60" />
       <div className="mx-auto max-w-page px-4 text-center lg:px-6">
         <p className="title gold-text text-sm tracking-[0.3em]">Les titres TBL</p>

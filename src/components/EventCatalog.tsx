@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { Calendar, MapPin } from "lucide-react";
 import { useSiteData } from "./SiteDataProvider";
-import { Logo } from "./Logo";
 import { RESERVATION_HREF, TICKETING_URL } from "@/data/site";
 
 const filters = ["Tous", "1vs1", "TBL événements", "Show", "Passés"] as const;
@@ -41,11 +40,6 @@ export function EventCatalog() {
               </div>
             </li>
           ))}
-          {list.length < 3 && (
-            <li aria-hidden className={`hidden items-center justify-center lg:flex ${list.length === 1 ? "lg:col-span-2" : ""}`}>
-              <Logo height={list.length === 1 ? 260 : 220} className="brightness-0 opacity-90" />
-            </li>
-          )}
         </ul>
       )}
     </>

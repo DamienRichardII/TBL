@@ -14,7 +14,6 @@ export function PageShell({ children, light = false, backdrop }: { children: Rea
       {b && (<>
         <Image src={b.l[0]} alt="" width={b.l[1]} height={b.l[2]} aria-hidden sizes="40vw" className="pointer-events-none absolute -left-32 top-20 grayscale -z-10 hidden h-[640px] w-auto opacity-30 [mask-image:linear-gradient(to_right,black_30%,transparent),linear-gradient(to_bottom,black_60%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in] lg:block xl:-left-16" />
         <Image src={b.r[0]} alt="" width={b.r[1]} height={b.r[2]} aria-hidden sizes="40vw" className="pointer-events-none absolute -right-10 top-20 grayscale -z-10 hidden h-[680px] w-auto opacity-30 [mask-image:linear-gradient(to_right,transparent,black_40%),linear-gradient(to_bottom,black_50%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in] lg:block xl:right-0" />
-        <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute left-1/2 top-24 -z-10 h-[170px] w-auto -translate-x-1/2 opacity-[.1] grayscale lg:top-28 lg:h-[320px] lg:opacity-[.14]" />
         <div className="gold-glow pointer-events-none absolute inset-x-0 top-0 -z-10 h-[700px] opacity-40 [mask-image:linear-gradient(to_bottom,black_50%,transparent)]" />
       </>)}
       <div className="mx-auto max-w-page px-4 lg:px-6">{children}</div>
