@@ -35,11 +35,10 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           <h1 className="title mt-1 text-5xl lg:text-7xl">{p.name}</h1>
           {p.nickname && <p className="title mt-2 text-2xl text-white/70">« {p.nickname} »</p>}
           <dl className="mt-8 grid max-w-md grid-cols-2 gap-4 text-sm">
-            <div className="rounded-xl border border-line p-4"><dt className="text-white/50">Taille</dt><dd className="title mt-1 text-2xl">{p.height}</dd></div>
-            <div className="rounded-xl border border-line p-4"><dt className="text-white/50">Numéro</dt><dd className="title mt-1 text-2xl">{p.number !== undefined ? `#${p.number}` : "À confirmer"}</dd></div>
+            <div className="col-span-2 rounded-xl border border-line p-4"><dt className="text-white/50">Taille</dt><dd className="title mt-1 text-2xl">{p.height}</dd></div>
             <div className="col-span-2 rounded-xl border border-line p-4"><dt className="text-white/50">Bilan TBL</dt>
               <dd className="title mt-1 text-2xl">{p.tblRecord ? `${p.tblRecord.wins} V – ${p.tblRecord.losses} D` : "À confirmer"}</dd>
-              {p.otherRecord && <dd className="mt-1 text-[12px] text-white/50">{p.otherRecord.source} : {p.otherRecord.wins} V – {p.otherRecord.losses} D — bilan hors TBL, non compté au classement TBL.</dd>}
+              {p.otherRecord && <dd className="mt-1 text-[12px] text-white/50">{p.otherRecord.source} : {p.otherRecord.wins} V – {p.otherRecord.losses} D — ligue 1v1 officielle, bilan inscrit au palmarès.</dd>}
             </div>
           </dl>
           {p.note && <p className="mt-6 max-w-xl text-[15px] text-white/75">{p.note}</p>}

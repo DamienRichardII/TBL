@@ -12,6 +12,6 @@ export const events: TblEvent[] = [
   },
   {
     slug: "tbl-01", name: "TBL 01", tags: ["1vs1", "TBL événements", "Passés"], status: "Passé",
-    dateLabel: "Date à confirmer", image: IMG.tbl01Cover, href: "/evenements/tbl-01",
+    dateLabel: "4 juillet 2026", image: IMG.tbl01Cover, href: "/evenements/tbl-01",
   },
 ];

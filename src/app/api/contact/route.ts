@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export const runtime = "nodejs";
 
 const TO = process.env.CONTACT_TO ?? "TheBallinLeague1v1@gmail.com";
-const FROM = process.env.CONTACT_FROM ?? "TBL Contact <onboarding@resend.dev>";
+const FROM = process.env.CONTACT_FROM ?? "TBL Contact <contact@theballinleague.fr>";
 const CATS: Record<string, string> = { joueur: "Joueur", partenaire: "Partenaire", sponsor: "Sponsor", media: "Média", general: "Demande générale" };
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c] as string);
 

@@ -1,7 +1,7 @@
 import type { Player } from "@/types";
 
 export const players: Player[] = [
-  { slug: "samuel-marwakal", photo: "/img/players/samuel-marwakal.webp", name: "Samuel", height: "1,92 m", division: "Middleweight", tblRecord: { wins: 3, losses: 1 }, note: "Bilan communiqué. Joueur confirmé de la scène 1v1." },
+  { slug: "samuel-marwakal", photo: "/img/players/samuel-marwakal.webp", name: "Samuel", height: "1,92 m", division: "Middleweight", tblRecord: { wins: 2, losses: 0 }, otherRecord: { source: "Top Hoops", wins: 1, losses: 1 }, note: "Bilan communiqué. Joueur confirmé de la scène 1v1." },
   { slug: "kieran", photo: "/img/players/kieran.webp", name: "Keran", height: "1,88 m", division: "Middleweight", tblRecord: { wins: 1, losses: 0 }, note: "Bilan communiqué, invaincu. Remplace Prince au main event." },
   { slug: "kenny-brown", photo: "/img/players/kenny-brown.webp", name: "Kenny", nickname: "Downtown", number: 1, height: "1,88 m", division: "Middleweight", tblRecord: { wins: 1, losses: 1 }, note: "Présent lors de TBL 01." },
   { slug: "bryan-pamba", photo: "/img/players/bryan-pamba.webp", name: "Bryan", nickname: "Chef B", number: 3, height: "1,86 m", division: "Middleweight", tblRecord: { wins: 0, losses: 0 }, note: "Expérience du basketball professionnel en Pro B et Pro A. Premier match 1v1 annoncé." },
