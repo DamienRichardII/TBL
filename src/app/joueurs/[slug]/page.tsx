@@ -7,6 +7,7 @@ import { getSiteData } from "@/lib/db";
 import { PageShell } from "@/components/PageHero";
 import { PlayerPlaceholder } from "@/components/Placeholder";
 import { Notice } from "@/components/DemoNotice";
+import { history, tally } from "@/data/history";
 
 export const revalidate = 60;
 export async function generateStaticParams() { return (await getSiteData()).players.map((p) => ({ slug: p.slug })); }
@@ -23,6 +24,10 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const getPlayer = (slug: string) => players.find((x) => x.slug === slug);
   const p = getPlayer((await params).slug);
   if (!p) notFound();
+  const hist = history[p.slug] ?? [];
+  const tbl = hist.length ? tally(hist, "TBL") : p.tblRecord;
+  const th = hist.length ? tally(hist, "Top Hoops") : undefined;
+  const other = th && th.wins + th.losses ? { source: "Top Hoops", ...th } : hist.length ? undefined : p.otherRecord;
   const m = matches.find((x) => x.a === p.slug || x.b === p.slug);
   const opp = m ? getPlayer(m.a === p.slug ? m.b : m.a) : undefined;
   return (
@@ -37,15 +42,22 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           <dl className="mt-8 grid max-w-md grid-cols-2 gap-4 text-sm">
             <div className="col-span-2 rounded-xl border border-line p-4"><dt className="text-white/50">Taille</dt><dd className="title mt-1 text-2xl">{p.height}</dd></div>
             <div className="col-span-2 rounded-xl border border-line p-4"><dt className="text-white/50">Bilan TBL</dt>
-              <dd className="title mt-1 text-2xl">{p.tblRecord ? `${p.tblRecord.wins} V – ${p.tblRecord.losses} D` : "À confirmer"}</dd>
-              {p.otherRecord && <dd className="mt-1 text-[12px] text-white/50">{p.otherRecord.source} : {p.otherRecord.wins} V – {p.otherRecord.losses} D — ligue 1v1 officielle, bilan inscrit au palmarès.</dd>}
+              <dd className="title mt-1 text-2xl">{tbl ? `${tbl.wins} V – ${tbl.losses} D` : "À confirmer"}</dd>
+              {other && <dd className="mt-1 text-[12px] text-white/50">{other.source} : {other.wins} V – {other.losses} D — ligue 1v1 officielle, bilan inscrit au palmarès.</dd>}
             </div>
           </dl>
           {p.note && <p className="mt-6 max-w-xl text-[15px] text-white/75">{p.note}</p>}
-          <h2 className="title mt-8 text-2xl">Historique TBL</h2>
+          <h2 className="title mt-8 text-2xl">Historique des matchs</h2>
           <ul className="mt-3 space-y-2 text-[15px]">
             {m && opp ? <li className="rounded-xl border border-line p-4"><span className="text-[11px] font-semibold uppercase tracking-widest text-gold">TBL 02 · 19 déc. 2026 · Game {m.game} ({m.label})</span><br />contre <Link href={`/joueurs/${opp.slug}`} className="underline underline-offset-4 hover:text-gold">{opp.name}</Link>{m.result ? ` — ${m.result.winner === p.slug ? "Victoire" : "Défaite"}` : " — à venir"}</li> : null}
-            <li className="text-[13px] text-white/50">Les anciens matchs TBL seront ajoutés après validation par TBL.</li>
+            {hist.map((h, i) => (
+              <li key={i} className="flex flex-wrap items-center gap-x-3 rounded-xl border border-line p-4">
+                <span className={`title text-xl ${h.result === "V" ? "text-emerald-400" : "text-red-400"}`}>{h.result === "V" ? "Victoire" : "Défaite"}</span>
+                <span>contre {h.vsSlug ? <Link href={`/joueurs/${h.vsSlug}`} className="underline underline-offset-4 hover:text-gold">{h.vs}</Link> : <span className={h.vs.startsWith("Adversaire") ? "italic text-white/50" : ""}>{h.vs}</span>}{h.score ? ` (${h.score})` : ""}</span>
+                <span className="rounded border border-white/15 px-1.5 py-px text-[10px] uppercase tracking-wider text-white/55">{h.platform}</span>
+              </li>
+            ))}
+            {!hist.length && <li className="text-[13px] text-white/50">Les anciens matchs seront ajoutés après validation par TBL.</li>}
           </ul>
           <h2 className="title mt-8 text-2xl">Vidéos</h2>
           {p.videos?.length

@@ -49,3 +49,6 @@ export interface TblEvent {
 }
 
 export interface RankEntry { slug: string; wins: number; losses: number; champion?: boolean }
+
+/** Un match officiel 1v1 d'un joueur (TBL ou autre ligue officielle comme Top Hoops). */
+export interface MatchLine { vs: string; vsSlug?: string; result: "V" | "D"; platform: "TBL" | "Top Hoops"; score?: string }

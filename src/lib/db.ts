@@ -4,6 +4,7 @@ import { players as staticPlayers } from "@/data/players";
 import { matches as staticMatches } from "@/data/matches";
 import { events as staticEvents } from "@/data/events";
 import { rankings as staticRankings } from "@/data/rankings";
+import { guests } from "@/data/history";
 import type { VideoKind } from "@/lib/youtube";
 
 /** Données du site : lues dans Supabase (modifiables depuis /admin), avec repli sur les données du code si la base est indisponible. */
@@ -79,6 +80,6 @@ export const getSiteData = cache(async (): Promise<SiteData> => {
     players: p.map(toPlayer),
     matches: m && m.length ? m.map(toMatch) : staticMatches,
     events: e && e.length ? e.map(toEvent) : staticEvents,
-    rankings: rankings.length ? rankings : staticRankings,
+    rankings: rankings.length ? [...rankings, ...staticRankings.filter((e) => guests[e.slug] && !rankings.some((x) => x.slug === e.slug))] : staticRankings,
   };
 });
