@@ -3,31 +3,32 @@ import type { MatchLine, RankEntry } from "@/types";
 /**
  * Historique des matchs officiels par joueur (source : « TBL_classement_V_D_par_match », novembre 2026).
  * Le classement cumule TBL + Top Hoops ; le détail par plateforme et par adversaire en est déduit.
+ * Ordre : du match le plus récent (haut) au plus ancien (bas).
  * Les adversaires externes (Prince, Yvad…) ne sont pas membres du classement : texte simple, sans lien.
  */
 const TBC = "Adversaire à confirmer";
 export const history: Record<string, MatchLine[]> = {
   "samuel-marwakal": [
-    { vs: "Kenny Brown", vsSlug: "kenny-brown", result: "V", platform: "TBL" },
-    { vs: "Tiegbe", vsSlug: "tiegbe-bamba", result: "V", platform: "TBL" },
     { vs: "Yvad", result: "V", platform: "Top Hoops", score: "30–28" },
     { vs: "Prince", result: "D", platform: "Top Hoops" },
+    { vs: "Tiegbe", vsSlug: "tiegbe-bamba", result: "V", platform: "TBL" },
+    { vs: "Kenny Brown", vsSlug: "kenny-brown", result: "V", platform: "TBL" },
   ],
   "kenny-brown": [
-    { vs: "Willis", result: "V", platform: "TBL" },
     { vs: "Samuel", vsSlug: "samuel-marwakal", result: "D", platform: "TBL" },
+    { vs: "Willis", result: "V", platform: "TBL" },
   ],
   "tiegbe-bamba": [{ vs: "Samuel", vsSlug: "samuel-marwakal", result: "D", platform: "TBL" }],
   kieran: [{ vs: "Chris", vsSlug: "chris", result: "V", platform: "TBL" }],
   chris: [{ vs: "Keran", vsSlug: "kieran", result: "D", platform: "TBL" }],
   desmo: [
-    { vs: "Curtis", vsSlug: "curtis", result: "V", platform: "Top Hoops" },
-    { vs: "Monkey", result: "V", platform: "Top Hoops" },
     { vs: "Rub's", result: "D", platform: "Top Hoops" },
+    { vs: "Monkey", result: "V", platform: "Top Hoops" },
+    { vs: "Curtis", vsSlug: "curtis", result: "V", platform: "Top Hoops" },
   ],
   curtis: [
-    { vs: "Joedoff", result: "V", platform: "Top Hoops" },
     { vs: "Desmo", vsSlug: "desmo", result: "D", platform: "Top Hoops" },
+    { vs: "Joedoff", result: "V", platform: "Top Hoops" },
   ],
   adama: [{ vs: "YBK", result: "V", platform: "Top Hoops", score: "30–23" }],
   sebastien: [{ vs: "Stanley", result: "V", platform: "Top Hoops" }],
