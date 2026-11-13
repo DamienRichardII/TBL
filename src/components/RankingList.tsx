@@ -32,7 +32,7 @@ type P = { slug: string; name: string; nickname?: string; division?: string; pho
 function Avatar({ p, size }: { p: P; size: string }) {
   return (
     <div className={`relative shrink-0 overflow-hidden rounded-full text-lg ${size}`}>
-      {p.photo ? <Image src={p.photo} alt={`Photo de ${p.name}`} fill sizes="200px" className="object-cover" /> : <span role="img" aria-label={`Photo de ${p.name} à venir`} className="flex h-full w-full items-center justify-center bg-gradient-to-b from-neutral-700 to-neutral-900"><span className="title text-[1.4em] text-white/70">{p.name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase()}</span></span>}
+      {p.photo ? <Image src={p.photo} alt={`Photo de ${p.name}`} fill sizes="200px" className="object-cover object-top" /> : <span role="img" aria-label={`Photo de ${p.name} à venir`} className="flex h-full w-full items-center justify-center bg-gradient-to-b from-neutral-700 to-neutral-900"><span className="title text-[1.4em] text-white/70">{p.name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase()}</span></span>}
     </div>
   );
 }
