@@ -10,3 +10,5 @@ next-env.d.ts
 assets/
 
 !.env.example
+
+Claude outputs/
