@@ -60,6 +60,9 @@ const toEvent = (r: EventRow): TblEvent => ({
   ...(r.venue ? { venue: r.venue } : {}), ...(r.access ? { access: r.access } : {}),
 });
 
+/** Photos locales des joueurs : version haute définition (-hd) pour un rendu net sur grand écran. */
+const hd = (pl: Player): Player => (pl.photo?.startsWith("/img/players/") && !pl.photo.includes("-hd.") ? { ...pl, photo: pl.photo.replace(/\.webp$/, "-hd.webp") } : pl);
+
 export const getSiteData = cache(async (): Promise<SiteData> => {
   const [p, m, e, r, v] = await Promise.all([
     rest<PlayerRow>("players", "select=*&order=sort.asc"),
@@ -69,7 +72,7 @@ export const getSiteData = cache(async (): Promise<SiteData> => {
     rest<VideoRow>("video_overrides"),
   ]);
   const base: SiteData = {
-    players: staticPlayers, matches: staticMatches, events: staticEvents, rankings: staticRankings,
+    players: staticPlayers.map(hd), matches: staticMatches, events: staticEvents, rankings: staticRankings,
     videoOverrides: Object.fromEntries((v ?? []).map((x) => [x.video_id, { kind: x.kind, hidden: x.hidden }])),
   };
   // La base fait foi dès qu'elle contient des joueurs ; sinon on garde les données du code.
@@ -77,7 +80,7 @@ export const getSiteData = cache(async (): Promise<SiteData> => {
   const rankings: RankEntry[] = (r ?? []).map((x) => ({ slug: x.player_slug, wins: x.wins, losses: x.losses, ...(x.champion ? { champion: true } : {}) }));
   return {
     ...base,
-    players: p.map(toPlayer),
+    players: p.map(toPlayer).map(hd),
     matches: m && m.length ? m.map(toMatch) : staticMatches,
     events: e && e.length ? e.map(toEvent) : staticEvents,
     rankings: rankings.length ? [...rankings, ...staticRankings.filter((e) => guests[e.slug] && !rankings.some((x) => x.slug === e.slug))] : staticRankings,

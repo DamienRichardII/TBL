@@ -34,7 +34,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     <PageShell>
       <Link href="/joueurs" className="text-[13px] text-white/60 hover:text-white">← Tous les joueurs</Link>
       <div className="mt-6 grid gap-8 lg:grid-cols-[360px_1fr]">
-        <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">{p.photo ? <Image src={p.photo} alt={`Photo de ${p.name}`} fill priority sizes="360px" className="object-cover" /> : <PlayerPlaceholder name={p.name} number={p.number} />}</div>
+        <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">{p.photo ? <Image src={p.photo} alt={`Photo de ${p.name}`} fill priority quality={90} sizes="(min-width:1024px) 360px, 100vw" className="object-cover" /> : <PlayerPlaceholder name={p.name} number={p.number} />}</div>
         <div>
           <p className="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-widest text-gold">{p.division}{p.champion && <span className="inline-flex items-center gap-1 rounded-full bg-gold px-2.5 py-0.5 text-[10px] font-bold text-ink"><Crown size={11} />Champion</span>}</p>
           <h1 className="title mt-1 text-5xl lg:text-7xl">{p.name}</h1>

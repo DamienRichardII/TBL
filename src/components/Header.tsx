@@ -45,7 +45,7 @@ export function Header() {
               </Link>); })}
           </nav>
           <div className="flex items-center gap-3">
-            <Socials className="hidden 2xl:flex" />
+            <Socials className="hidden xl:flex" />
             <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" className="btn btn-yt hidden !px-4 !py-2.5 lg:inline-flex gap-2"><Youtube size={16} />YouTube</a>
             <Link href={RESERVATION_HREF} className="btn btn-gold !px-4 !py-2.5 text-[11px] lg:!px-5">Réserver</Link>
           </div>
