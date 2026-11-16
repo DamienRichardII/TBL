@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Check, Minus, Plus } from "lucide-react";
 import { Notice } from "./DemoNotice";
+import { SOLD_OUT } from "@/data/site";
 
 const days = ["Lu", "Ma", "Me", "Je", "Ve", "Sa", "Di"];
 const EVENT_DAY = 19;
@@ -28,9 +29,11 @@ export function ReservationPrototype() {
     <div className="mx-auto max-w-md">
       <h1 className="title mb-1 text-3xl">Réserver ma place</h1>
       <p className="mb-5 text-sm text-white/65">TBL 02 — The Throne · Orléans · accès gratuit</p>
-      <Notice>Prototype visuel : aucune réservation n’est enregistrée pour le moment. Aucun paiement n’est demandé.</Notice>
+      {SOLD_OUT
+        ? <div role="status" className="rounded-xl border border-red-500/50 bg-red-500/10 px-4 py-3 text-center"><p className="title text-2xl tracking-[0.2em] text-red-400">Sold out</p><p className="mt-1 text-[13px] text-white/70">Toutes les places pour TBL 02 — The Throne ont été réservées.</p></div>
+        : <Notice>Prototype visuel : aucune réservation n’est enregistrée pour le moment. Aucun paiement n’est demandé.</Notice>}
 
-      <section aria-label="Calendrier" className="mt-6 rounded-2xl border border-line p-4">
+      <section aria-label="Calendrier" className={`mt-6 rounded-2xl border border-line p-4 ${SOLD_OUT ? "opacity-50" : ""}`}>
         <p className="mb-3 text-center text-sm font-medium">Décembre 2026</p>
         <div className="grid grid-cols-7 gap-1 text-center text-[12px]">
           {days.map((d) => <span key={d} className="py-1 text-white/40">{d}</span>)}
@@ -40,19 +43,19 @@ export function ReservationPrototype() {
         <p className="mt-3 text-center text-[12px] text-white/55">Samedi 19 décembre · 18 h 00</p>
       </section>
 
-      <section aria-label="Places" className="mt-4 flex items-center justify-between rounded-2xl border border-line p-4">
-        <div><p className="text-sm font-medium">Accès événement</p><p className="text-[12px] text-white/55">Gratuit · sur réservation</p></div>
+      <section aria-label="Places" className={`mt-4 flex items-center justify-between rounded-2xl border border-line p-4 ${SOLD_OUT ? "opacity-50" : ""}`}>
+        <div><p className="text-sm font-medium">Accès événement</p><p className="text-[12px] text-white/55">{SOLD_OUT ? "Complet" : "Gratuit · sur réservation"}</p></div>
         <div className="flex items-center gap-3">
-          <button aria-label="Retirer une place" onClick={() => setQty(Math.max(1, qty - 1))} className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30"><Minus size={14} /></button>
+          <button aria-label="Retirer une place" disabled={SOLD_OUT} onClick={() => setQty(Math.max(1, qty - 1))} className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30"><Minus size={14} /></button>
           <span aria-live="polite" className="w-5 text-center text-sm">{qty}</span>
-          <button aria-label="Ajouter une place" onClick={() => setQty(Math.min(10, qty + 1))} className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30"><Plus size={14} /></button>
+          <button aria-label="Ajouter une place" disabled={SOLD_OUT} onClick={() => setQty(Math.min(10, qty + 1))} className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30"><Plus size={14} /></button>
         </div>
       </section>
-      <p className="mt-2 text-[11px] text-white/40">Nombre de places maximum par réservation : à confirmer par TBL.</p>
+      {!SOLD_OUT && <p className="mt-2 text-[11px] text-white/40">Nombre de places maximum par réservation : à confirmer par TBL.</p>}
 
-      <div className="mt-5 flex items-center justify-between border-t border-line pt-4 text-sm"><span>Total</span><span className="title text-xl">Gratuit</span></div>
-      <button type="button" aria-disabled="true" className="btn btn-disabled mt-4 w-full">Réservation bientôt disponible</button>
-      <button onClick={() => setDemo(true)} className="mt-4 w-full text-center text-[12px] text-white/50 underline underline-offset-4 hover:text-white">Voir l’aperçu de l’écran de confirmation (démo)</button>
+      <div className="mt-5 flex items-center justify-between border-t border-line pt-4 text-sm"><span>Total</span><span className="title text-xl">{SOLD_OUT ? "Complet" : "Gratuit"}</span></div>
+      <button type="button" disabled aria-disabled="true" className="btn btn-disabled mt-4 w-full">{SOLD_OUT ? "Sold out" : "Réservation bientôt disponible"}</button>
+      {!SOLD_OUT && <button onClick={() => setDemo(true)} className="mt-4 w-full text-center text-[12px] text-white/50 underline underline-offset-4 hover:text-white">Voir l’aperçu de l’écran de confirmation (démo)</button>}
     </div>
   );
 }

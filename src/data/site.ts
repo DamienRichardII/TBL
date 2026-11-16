@@ -6,6 +6,8 @@ export const TIKTOK_URL = "https://www.tiktok.com/@theballinleague";
 
 /** Lien de la vraie billetterie : à renseigner dès réception. Vide = page de réservation provisoire. */
 export const TICKETING_URL = "";
+/** TBL 02 complet : affiche « SOLD OUT » sur la page de réservation (passer à false pour rouvrir). */
+export const SOLD_OUT = true;
 /** ID YouTube d'un live à venir (vide = aucun live programmé). */
 export const LIVE_VIDEO_ID = "";
 /** Début de TBL 02 — samedi 19 décembre 2026, 18 h (heure de Paris). */
