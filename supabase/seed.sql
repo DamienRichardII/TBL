@@ -46,7 +46,7 @@ update public.players set wins=0, losses=0, photo='/img/players/bryan-pamba.webp
 update public.players set wins=0, losses=0, photo='/img/players/yanis.webp' where slug='yanis';
 update public.players set wins=0, losses=0, other_source='Top Hoops', other_wins=2, other_losses=1, photo='/img/players/curtis.webp' where slug='curtis';
 update public.players set wins=0, losses=0, photo='/img/players/imran.webp' where slug='imran';
-update public.players set wins=0, losses=0, other_source='Top Hoops', other_wins=2, other_losses=1, photo='/img/players/desmo.webp' where slug='desmo';
+update public.players set wins=0, losses=0, other_source='Top Hoops', other_wins=2, other_losses=0, photo='/img/players/desmo.webp' where slug='desmo';
 update public.players set wins=0, losses=0, photo='/img/players/dani.webp' where slug='dani';
 update public.players set wins=0, losses=0, photo='/img/players/matthias.webp' where slug='matthias';
 update public.players set wins=0, losses=1, photo='/img/players/aurelien.webp' where slug='aurelien';

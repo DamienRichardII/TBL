@@ -25,7 +25,7 @@ export function EventDetail() {
           <p className="title text-3xl text-gold lg:text-4xl">The Throne</p>
           <ul className="mt-6 space-y-3 text-[15px]">
             <li className="flex items-center gap-3"><Calendar size={18} className="text-gold" />Samedi 19 décembre 2026</li>
-            <li className="flex items-center gap-3"><Clock size={18} className="text-gold" />Début à 18 h 00</li>
+            <li className="flex items-center gap-3"><Clock size={18} className="text-gold" />Ouverture des portes à 17 h 00 · Début à 18 h 00</li>
             <li className="flex items-start gap-3"><MapPin size={18} className="mt-0.5 text-gold" /><span>Orléans · gymnase Victor Fouillade<br /><span className="text-white/50">Nom exact et adresse à confirmer</span></span></li>
             <li className="flex items-center gap-3"><Ticket size={18} className="text-gold" />Accès gratuit, sur réservation en ligne uniquement</li>
           </ul>

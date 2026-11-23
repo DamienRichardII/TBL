@@ -40,7 +40,7 @@ export function ReservationPrototype() {
           {cells.map((c, i) => c === null ? <span key={i} /> :
             <span key={i} aria-current={c === EVENT_DAY ? "date" : undefined} className={`flex h-9 items-center justify-center rounded-full ${c === EVENT_DAY ? "bg-white font-bold text-ink" : "text-white/30"}`}>{c}</span>)}
         </div>
-        <p className="mt-3 text-center text-[12px] text-white/55">Samedi 19 décembre · 18 h 00</p>
+        <p className="mt-3 text-center text-[12px] text-white/55">Samedi 19 décembre · portes 17 h 00 · début 18 h 00</p>
       </section>
 
       <section aria-label="Places" className={`mt-4 flex items-center justify-between rounded-2xl border border-line p-4 ${SOLD_OUT ? "opacity-50" : ""}`}>

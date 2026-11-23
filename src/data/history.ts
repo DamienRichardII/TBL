@@ -22,7 +22,6 @@ export const history: Record<string, MatchLine[]> = {
   kieran: [{ vs: "Chris", vsSlug: "chris", result: "V", platform: "TBL" }],
   chris: [{ vs: "Keran", vsSlug: "kieran", result: "D", platform: "TBL" }],
   desmo: [
-    { vs: "Rub's", result: "D", platform: "Top Hoops" },
     { vs: "Monkey", result: "V", platform: "Top Hoops" },
     { vs: "Curtis", vsSlug: "curtis", result: "V", platform: "Top Hoops" },
   ],

@@ -30,18 +30,18 @@ export function Header() {
   return (
     <>
       <header className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${scrolled ? "border-b border-line bg-ink/90 backdrop-blur-md" : "bg-gradient-to-b from-ink/90 to-ink/30 backdrop-blur-[2px]"}`}>
-        <div className="mx-auto flex h-16 max-w-page items-center justify-between px-4 lg:h-[72px] lg:px-6">
+        <div className="mx-auto flex h-16 max-w-[1480px] items-center justify-between gap-4 px-4 lg:h-[72px] lg:px-6">
           <button className="lg:hidden" aria-label="Ouvrir le menu" aria-expanded={open} onClick={() => setOpen(true)}><Menu size={26} /></button>
-          <Link href="/" aria-label="TBL – Accueil" className="hidden items-center gap-3 lg:flex">
+          <Link href="/" aria-label="TBL – Accueil" className="hidden shrink-0 items-center gap-3 lg:flex">
             <Logo height={46} priority />
-            <span className="title hidden text-[17px] tracking-[0.12em] xl:inline">The Ballin League</span>
+            <span className="title hidden whitespace-nowrap text-[17px] tracking-[0.12em] 2xl:inline">The Ballin League</span>
           </Link>
           <Link href="/" aria-label="TBL – Accueil" className="absolute left-1/2 -translate-x-1/2 lg:hidden"><Logo height={38} priority /></Link>
-          <nav aria-label="Navigation principale" className="hidden items-center gap-1.5 lg:flex">
-            {nav.map((n, i) => { const Icon = icons[i]; const on = active(n.href); return (
+          <nav aria-label="Navigation principale" className="hidden items-center lg:flex xl:gap-1">
+            {nav.map((n) => { const on = active(n.href); return (
               <Link key={n.href} href={n.href} aria-current={on ? "page" : undefined}
-                className={`flex min-w-[68px] flex-col items-center gap-1 rounded-xl border px-2.5 py-2 text-[10px] font-semibold uppercase tracking-wider transition xl:min-w-[78px] xl:px-3 ${on ? "border-gold bg-gold/10 text-gold" : "border-white/10 text-white/80 hover:border-gold/50 hover:text-white"}`}>
-                <Icon size={20} strokeWidth={1.6} className="text-gold" />{n.label}
+                className={`rounded-lg border px-2 py-2 text-[10.5px] font-semibold uppercase tracking-[0.1em] transition xl:px-3 xl:text-[12px] xl:tracking-[0.14em] ${on ? "border-gold bg-gold/10 text-gold" : "border-transparent text-white/85 hover:border-white/20 hover:text-white"}`}>
+                {n.label}
               </Link>); })}
           </nav>
           <div className="flex items-center gap-3">

@@ -6,7 +6,7 @@ export const SLUG_TBL02 = "tbl-02-the-throne";
 export const events: TblEvent[] = [
   {
     slug: SLUG_TBL02, name: "TBL 02", subtitle: "The Throne", tags: ["1vs1", "TBL événements"], status: "À venir",
-    dateLabel: "Samedi 19 décembre 2026", time: "18 h 00", city: "Orléans",
+    dateLabel: "Samedi 19 décembre 2026", time: "Portes 17 h 00 · Début 18 h 00", city: "Orléans",
     venue: "Gymnase Victor Fouillade (nom et adresse à confirmer)",
     access: "Gratuit, sur réservation en ligne", image: IMG.posters.group, href: "/evenements/tbl-02-the-throne",
   },

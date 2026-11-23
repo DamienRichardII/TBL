@@ -87,8 +87,8 @@ export function NextEvent() {
   const side = "absolute top-0 h-full w-[200%] max-w-none";
   return (
     <section className="relative isolate overflow-hidden bg-ink">
-      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute top-1/2 -left-[4%] z-[5] hidden h-[48%] w-auto -translate-y-1/2 opacity-[.18] grayscale lg:block" />
-      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute top-1/2 -right-[4%] z-[5] hidden h-[48%] w-auto -translate-y-1/2 opacity-[.18] grayscale lg:block" />
+      <Image src="/img/bg/side-dani-bw.webp" alt="" width={800} height={800} aria-hidden sizes="420px" className="pointer-events-none absolute bottom-0 -left-[3%] z-[5] hidden h-[64%] opacity-60 min-[1700px]:block w-auto [mask-image:linear-gradient(to_right,black_30%,transparent_95%),linear-gradient(to_top,black_70%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]" />
+      <Image src="/img/bg/side-matthias-bw.webp" alt="" width={800} height={800} aria-hidden sizes="420px" className="pointer-events-none absolute bottom-0 -right-[3%] z-[5] hidden h-[64%] opacity-60 min-[1700px]:block w-auto [mask-image:linear-gradient(to_left,black_30%,transparent_95%),linear-gradient(to_top,black_70%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]" />
       <div className="mx-auto grid max-w-[1600px] grid-cols-2 lg:grid-cols-[1fr_minmax(0,1.15fr)_1fr]">
         <div className="relative aspect-[4/5] overflow-hidden lg:order-1 lg:aspect-auto lg:min-h-[560px]">
           <div className={`${side} left-0`}><Image src={IMG.posters.samuelKeran} alt="Keran — TBL 02" fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover object-[50%_0%] lg:object-[50%_9%]" /></div>
@@ -128,8 +128,8 @@ export async function FeaturedMatches() {
     .map((m) => ({ game: m.game, label: m.label, poster: m.poster, alt: m.posterAlt, a: nm(m.a)!, b: nm(m.b)!, main: m.game === 8 }));
   return (
     <section className="relative isolate overflow-hidden bg-ink pb-16 pt-6 lg:pb-24">
-      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute top-1/2 -z-10 hidden h-[48%] w-auto -translate-y-1/2 opacity-[.12] grayscale lg:block -left-[4%]" />
-      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute top-1/2 -z-10 hidden h-[48%] w-auto -translate-y-1/2 opacity-[.12] grayscale lg:block -right-[4%]" />
+      <Image src="/img/bg/side-imran-bw.webp" alt="" width={800} height={800} aria-hidden sizes="420px" className="pointer-events-none absolute bottom-0 -left-[3%] -z-10 hidden h-[70%] opacity-40 lg:block w-auto [mask-image:linear-gradient(to_right,black_30%,transparent_95%),linear-gradient(to_top,black_70%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]" />
+      <Image src="/img/bg/side-sebastien-bw.webp" alt="" width={800} height={800} aria-hidden sizes="420px" className="pointer-events-none absolute bottom-0 -right-[3%] -z-10 hidden h-[70%] opacity-40 lg:block w-auto [mask-image:linear-gradient(to_left,black_30%,transparent_95%),linear-gradient(to_top,black_70%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]" />
       <div className="mx-auto max-w-page px-4 lg:px-6">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div><p className="title gold-text text-sm tracking-[0.3em]">TBL 02 — The Throne</p><h2 className="title mt-2 text-4xl lg:text-6xl">La carte des 8 matchs</h2></div>
@@ -147,8 +147,8 @@ export async function WatchSection() {
   const vids = (await getLatestVideos(50)).filter((v) => !v.short && !videoOverrides[v.id]?.hidden).map((v) => ({ ...v, kind: kindOf(v.title, videoOverrides[v.id]?.kind) }));
   return (
     <section className="relative isolate overflow-hidden bg-gradient-to-b from-ink via-neutral-950 to-ink py-14 lg:py-24">
-      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute top-1/2 -left-[4%] -z-10 hidden h-[48%] w-auto -translate-y-1/2 opacity-[.12] grayscale lg:block" />
-      <Image src="/img/tbl-logo.png" alt="" width={430} height={560} aria-hidden className="pointer-events-none absolute top-1/2 -right-[4%] -z-10 hidden h-[48%] w-auto -translate-y-1/2 opacity-[.12] grayscale lg:block" />
+      <Image src="/img/bg/side-kenny-brown-bw.webp" alt="" width={800} height={800} aria-hidden sizes="420px" className="pointer-events-none absolute bottom-0 -left-[3%] -z-10 hidden h-[70%] opacity-40 lg:block w-auto [mask-image:linear-gradient(to_right,black_30%,transparent_95%),linear-gradient(to_top,black_70%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]" />
+      <Image src="/img/bg/side-chris-bw.webp" alt="" width={800} height={800} aria-hidden sizes="420px" className="pointer-events-none absolute bottom-0 -right-[3%] -z-10 hidden h-[70%] opacity-40 lg:block w-auto [mask-image:linear-gradient(to_left,black_30%,transparent_95%),linear-gradient(to_top,black_70%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]" />
       <div className="mx-auto max-w-page px-4 lg:px-6">
         <p className="title text-sm tracking-[0.3em] text-[#ff4d4d]">YouTube</p>
         <h2 className="title mt-2 text-4xl lg:text-6xl">Regardez nos vidéos YouTube</h2>
