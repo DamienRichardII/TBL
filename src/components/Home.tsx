@@ -48,7 +48,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,9,11,.35),transparent_55%)]" />
       </div>
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <Image src="/img/dust-left.webp" alt="" width={700} height={1100} className="absolute left-0 top-0 h-full w-auto max-w-[45vw] object-cover object-left opacity-80 [mask-image:linear-gradient(to_right,black_40%,transparent)]" />
+        <div className="absolute inset-y-0 left-0 hidden w-[calc((100vw-1280px)/2+24px)] flex-col items-center justify-center gap-4 min-[1500px]:flex"><Logo height={150} priority className="max-w-[75%] object-contain opacity-95 drop-shadow-[0_6px_30px_rgba(0,0,0,.6)]" /><span className="title text-center text-[13px] font-semibold uppercase leading-snug tracking-[0.32em] text-white/90">The Ballin<br />League</span></div>
       </div>
       <div className="mx-auto w-full max-w-page px-4 lg:px-6">
         <div className="relative pb-6 pt-4 lg:max-w-[64%] lg:py-10 lg:pl-6">
@@ -123,8 +123,8 @@ export async function FeaturedMatches() {
     .map((m) => ({ game: m.game, label: m.label, poster: m.poster, alt: m.posterAlt, a: nm(m.a)!, b: nm(m.b)!, main: m.game === 8 }));
   return (
     <section className="relative isolate overflow-hidden bg-ink pb-16 pt-6 lg:pb-24">
-      <Image src="/img/bg/side-imran-bw.webp" alt="" width={800} height={800} aria-hidden sizes="420px" className="pointer-events-none absolute bottom-0 -left-[3%] -z-10 hidden h-[70%] opacity-40 lg:block w-auto [mask-image:linear-gradient(to_right,black_30%,transparent_95%),linear-gradient(to_top,black_70%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]" />
-      <Image src="/img/bg/side-sebastien-bw.webp" alt="" width={800} height={800} aria-hidden sizes="420px" className="pointer-events-none absolute bottom-0 -right-[3%] -z-10 hidden h-[70%] opacity-40 lg:block w-auto [mask-image:linear-gradient(to_left,black_30%,transparent_95%),linear-gradient(to_top,black_70%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]" />
+        <Image src="/img/bg/cut-a.webp" alt="" width={600} height={900} aria-hidden sizes="420px" className="pointer-events-none absolute bottom-0 left-[1%] -z-10 hidden h-[74%] w-auto opacity-70 lg:block [mask-image:linear-gradient(to_right,black_55%,transparent),linear-gradient(to_top,transparent,black_45%)] [mask-composite:intersect] [-webkit-mask-composite:source-in]" />
+        <Image src="/img/bg/cut-b.webp" alt="" width={600} height={900} aria-hidden sizes="420px" className="pointer-events-none absolute bottom-0 right-[1%] -z-10 hidden h-[74%] w-auto opacity-70 lg:block [mask-image:linear-gradient(to_left,black_55%,transparent),linear-gradient(to_top,transparent,black_45%)] [mask-composite:intersect] [-webkit-mask-composite:source-in]" />
       <div className="mx-auto max-w-page px-4 lg:px-6">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div><p className="title gold-text text-sm tracking-[0.3em]">TBL 02 — The Throne</p><h2 className="title mt-2 text-4xl lg:text-6xl">La carte des 8 matchs</h2></div>
@@ -142,8 +142,8 @@ export async function WatchSection() {
   const vids = (await getLatestVideos(50)).filter((v) => !v.short && !videoOverrides[v.id]?.hidden).map((v) => ({ ...v, kind: kindOf(v.title, videoOverrides[v.id]?.kind) }));
   return (
     <section className="relative isolate overflow-hidden bg-gradient-to-b from-ink via-neutral-950 to-ink py-14 lg:py-24">
-      <Image src="/img/bg/side-kenny-brown-bw.webp" alt="" width={800} height={800} aria-hidden sizes="420px" className="pointer-events-none absolute bottom-0 -left-[3%] -z-10 hidden h-[70%] opacity-40 lg:block w-auto [mask-image:linear-gradient(to_right,black_30%,transparent_95%),linear-gradient(to_top,black_70%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]" />
-      <Image src="/img/bg/side-chris-bw.webp" alt="" width={800} height={800} aria-hidden sizes="420px" className="pointer-events-none absolute bottom-0 -right-[3%] -z-10 hidden h-[70%] opacity-40 lg:block w-auto [mask-image:linear-gradient(to_left,black_30%,transparent_95%),linear-gradient(to_top,black_70%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]" />
+        <Image src="/img/bg/cut-c.webp" alt="" width={600} height={900} aria-hidden sizes="420px" className="pointer-events-none absolute bottom-0 left-[1%] -z-10 hidden h-[74%] w-auto opacity-70 lg:block [mask-image:linear-gradient(to_right,black_55%,transparent),linear-gradient(to_top,transparent,black_45%)] [mask-composite:intersect] [-webkit-mask-composite:source-in]" />
+        <Image src="/img/bg/cut-d.webp" alt="" width={600} height={900} aria-hidden sizes="420px" className="pointer-events-none absolute bottom-0 right-[1%] -z-10 hidden h-[74%] w-auto opacity-70 lg:block [mask-image:linear-gradient(to_left,black_55%,transparent),linear-gradient(to_top,transparent,black_45%)] [mask-composite:intersect] [-webkit-mask-composite:source-in]" />
       <div className="mx-auto max-w-page px-4 lg:px-6">
         <p className="title text-sm tracking-[0.3em] text-[#ff4d4d]">YouTube</p>
         <h2 className="title mt-2 text-4xl lg:text-6xl">Regardez nos vidéos YouTube</h2>
