@@ -37,14 +37,14 @@ export function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-ink pt-24 pb-10 lg:flex lg:min-h-[min(100svh,920px)] lg:items-center lg:pb-0 lg:pt-[72px]">
       <div aria-hidden className="absolute inset-y-0 right-0 -z-10 hidden w-[74%] lg:block">
-        <Image src="/img/hero-bg.webp" alt="" fill priority sizes="74vw" className="object-cover object-[50%_22%] saturate-[1.2] contrast-[1.05]" />
+        <Image src="/img/hero-bg-hd.webp" alt="" fill priority quality={90} sizes="74vw" className="object-cover object-[50%_22%] saturate-[1.2] contrast-[1.05]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,#08090B_0%,rgba(8,9,11,.7)_14%,rgba(8,9,11,.2)_36%,transparent_55%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(60%_70%_at_75%_40%,rgba(201,161,92,.22),transparent)] mix-blend-screen" />
         <div className="absolute inset-x-0 bottom-0 h-1/6 bg-gradient-to-t from-ink to-transparent" />
         <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-ink/70 to-transparent" />
       </div>
       <div aria-hidden className="absolute inset-0 -z-10 lg:hidden">
-        <Image src="/img/hero-bg.webp" alt="" fill priority sizes="100vw" className="object-cover object-[46%_0%] saturate-[1.2]" />
+        <Image src="/img/hero-bg-hd.webp" alt="" fill priority quality={90} sizes="100vw" className="object-cover object-[46%_0%] saturate-[1.2]" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,9,11,.45)_0%,rgba(8,9,11,.3)_30%,rgba(8,9,11,.7)_72%,#08090B_100%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,9,11,.35),transparent_55%)]" />
       </div>
