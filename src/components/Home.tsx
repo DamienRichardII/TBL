@@ -37,7 +37,7 @@ export function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-ink pt-24 pb-10 lg:flex lg:min-h-[min(100svh,920px)] lg:items-center lg:pb-0 lg:pt-[72px]">
       <div aria-hidden className="absolute inset-y-0 right-0 -z-10 hidden w-[74%] lg:block">
-        <Image src="/img/hero-real-hd.webp" alt="" fill priority quality={90} sizes="74vw" className="object-cover object-[50%_22%]" />
+        <Image src="/img/hero-real-hd.webp" alt="" fill priority quality={90} sizes="74vw" className="object-cover object-[50%_0%]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,#08090B_0%,rgba(8,9,11,.7)_14%,rgba(8,9,11,.2)_36%,transparent_55%)]" />
         <div className="absolute inset-x-0 bottom-0 h-1/6 bg-gradient-to-t from-ink to-transparent" />
         <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-ink/70 to-transparent" />
