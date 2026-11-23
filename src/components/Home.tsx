@@ -87,8 +87,6 @@ export function NextEvent() {
   const side = "absolute top-0 h-full w-[200%] max-w-none";
   return (
     <section className="relative isolate overflow-hidden bg-ink">
-      <Image src="/img/bg/side-dani-bw.webp" alt="" width={800} height={800} aria-hidden sizes="420px" className="pointer-events-none absolute bottom-0 -left-[3%] z-[5] hidden h-[64%] opacity-60 min-[1700px]:block w-auto [mask-image:linear-gradient(to_right,black_30%,transparent_95%),linear-gradient(to_top,black_70%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]" />
-      <Image src="/img/bg/side-matthias-bw.webp" alt="" width={800} height={800} aria-hidden sizes="420px" className="pointer-events-none absolute bottom-0 -right-[3%] z-[5] hidden h-[64%] opacity-60 min-[1700px]:block w-auto [mask-image:linear-gradient(to_left,black_30%,transparent_95%),linear-gradient(to_top,black_70%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]" />
       <div className="mx-auto grid max-w-[1600px] grid-cols-2 lg:grid-cols-[1fr_minmax(0,1.15fr)_1fr]">
         <div className="relative aspect-[4/5] overflow-hidden lg:order-1 lg:aspect-auto lg:min-h-[560px]">
           <div className={`${side} left-0`}><Image src={IMG.posters.samuelKeran} alt="Keran — TBL 02" fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover object-[50%_0%] lg:object-[50%_9%]" /></div>
