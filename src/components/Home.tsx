@@ -37,21 +37,18 @@ export function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-ink pt-24 pb-10 lg:flex lg:min-h-[min(100svh,920px)] lg:items-center lg:pb-0 lg:pt-[72px]">
       <div aria-hidden className="absolute inset-y-0 right-0 -z-10 hidden w-[74%] lg:block">
-        <Image src="/img/hero-bg-hd.webp" alt="" fill priority quality={90} sizes="74vw" className="object-cover object-[50%_22%] saturate-[1.2] contrast-[1.05]" />
+        <Image src="/img/hero-bg-hd.webp" alt="" fill priority quality={90} sizes="74vw" className="object-cover object-[50%_22%]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,#08090B_0%,rgba(8,9,11,.7)_14%,rgba(8,9,11,.2)_36%,transparent_55%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(60%_70%_at_75%_40%,rgba(201,161,92,.22),transparent)] mix-blend-screen" />
         <div className="absolute inset-x-0 bottom-0 h-1/6 bg-gradient-to-t from-ink to-transparent" />
         <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-ink/70 to-transparent" />
       </div>
       <div aria-hidden className="absolute inset-0 -z-10 lg:hidden">
-        <Image src="/img/hero-bg-hd.webp" alt="" fill priority quality={90} sizes="100vw" className="object-cover object-[46%_0%] saturate-[1.2]" />
+        <Image src="/img/hero-bg-hd.webp" alt="" fill priority quality={90} sizes="100vw" className="object-cover object-[46%_0%]" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,9,11,.45)_0%,rgba(8,9,11,.3)_30%,rgba(8,9,11,.7)_72%,#08090B_100%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,9,11,.35),transparent_55%)]" />
       </div>
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <Image src="/img/dust-left.webp" alt="" width={700} height={1100} className="absolute left-0 top-0 h-full w-auto max-w-[45vw] object-cover object-left opacity-80 [mask-image:linear-gradient(to_right,black_40%,transparent)]" />
-        <Image src="/img/dust-right.webp" alt="" width={700} height={1100} className="absolute right-0 top-0 hidden h-full w-auto max-w-[30vw] object-cover object-right opacity-90 lg:block" />
-        <Crown className="absolute right-[4%] top-[34%] hidden text-gold/70 xl:block" size={64} strokeWidth={1} />
       </div>
       <div className="mx-auto w-full max-w-page px-4 lg:px-6">
         <div className="relative pb-6 pt-4 lg:max-w-[64%] lg:py-10 lg:pl-6">
